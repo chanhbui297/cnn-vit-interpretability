@@ -218,3 +218,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project datasets (keep the folder placeholder)
+/data/*
+!/data/.gitkeep
+/datasets/
+
+# Model checkpoints and weights
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Generated experiment outputs (keep folder placeholders)
+/results/figures/*
+!/results/figures/.gitkeep
+/results/metrics/*
+!/results/metrics/.gitkeep
+/outputs/
+/runs/
