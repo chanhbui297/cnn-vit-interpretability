@@ -1,0 +1,2 @@
+mode,num_images,resnet50_top1_percent,vit_b_16_top1_percent,top1_gap_resnet_minus_vit_pp,absolute_top1_gap_pp
+full,50000,80.844,81.066,-0.2220000000000084,0.2220000000000084

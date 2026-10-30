@@ -222,6 +222,7 @@ __marimo__/
 # Project datasets (keep the folder placeholder)
 /data/*
 !/data/.gitkeep
+!/data/README.md
 /datasets/
 
 # Model checkpoints and weights
@@ -238,3 +239,48 @@ checkpoints/
 !/results/metrics/.gitkeep
 /outputs/
 /runs/
+
+# Credentials and local Hugging Face state
+.env.*
+!.env.example
+.huggingface/
+hf_cache/
+token
+stored_tokens
+credentials.json
+service-account*.json
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Dataset archives, arrays, and additional model binary formats
+*.parquet
+*.arrow
+*.bin
+*.onnx
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pkl
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+
+# Share only the approved analysis manifest under data/
+!/data/manifests/
+/data/manifests/*
+!/data/manifests/analysis_10000_seed42.csv
+
+# Share only these five validated full-baseline CSVs
+!/results/metrics/baseline_notebook/
+/results/metrics/baseline_notebook/*
+!/results/metrics/baseline_notebook/full/
+/results/metrics/baseline_notebook/full/*
+!/results/metrics/baseline_notebook/full/summary.csv
+!/results/metrics/baseline_notebook/full/comparison.csv
+!/results/metrics/baseline_notebook/full/selected_images.csv
+!/results/metrics/baseline_notebook/full/resnet50_predictions.csv
+!/results/metrics/baseline_notebook/full/vit_b_16_predictions.csv

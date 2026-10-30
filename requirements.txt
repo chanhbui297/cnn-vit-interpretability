@@ -6,3 +6,5 @@ pandas
 matplotlib
 pillow
 tqdm
+pyarrow
+ipykernel
