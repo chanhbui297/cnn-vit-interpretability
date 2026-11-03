@@ -284,3 +284,17 @@ id_ed25519
 !/results/metrics/baseline_notebook/full/selected_images.csv
 !/results/metrics/baseline_notebook/full/resnet50_predictions.csv
 !/results/metrics/baseline_notebook/full/vit_b_16_predictions.csv
+
+# Share reviewed experiment deliverables only; intermediate files stay local.
+!/results/metrics/experiments/
+/results/metrics/experiments/**
+!/results/metrics/experiments/**/
+!/results/metrics/experiments/**/final/*.csv
+!/results/metrics/experiments/**/final/*.json
+!/results/figures/experiments/
+/results/figures/experiments/**
+!/results/figures/experiments/**/
+!/results/figures/experiments/**/final/*.png
+!/results/figures/experiments/**/final/*.jpg
+!/results/figures/experiments/**/final/*.svg
+!/results/figures/experiments/**/final/*.pdf
