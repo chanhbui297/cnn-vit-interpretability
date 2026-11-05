@@ -1,46 +1,64 @@
 # Bàn giao TV4 cho reviewer
 
-## Trạng thái
+## Trạng thái cuối
 
 | Hạng mục | Trạng thái | Bằng chứng |
 |---|---|---|
-| Shape-vs-Texture Bias | Hoàn thành | 1.280 ảnh; 2.560 prediction rows, figures và metadata |
-| Texture Robustness | Chưa chạy full | Script hoàn chỉnh và smoke-test đã xác nhận thiếu ImageNet shards |
-| Notebooks | Hoàn thành có điều kiện | Shape notebook chứa output full; texture notebook ghi rõ blocker và lệnh chạy lại |
-| Báo cáo tiếng Việt | Hoàn thành có điều kiện | `docs/tv4_report.md`, không diễn giải texture khi chưa có dữ liệu |
+| Shape-vs-Texture Bias | Hoàn thành | Full benchmark 1.280 ảnh, 2.560 prediction rows, figures và metadata |
+| Texture Robustness | Chưa chạy full | Script/notebook đầy đủ; raw ImageNet 14 shards không hiện diện và source gated trả 401 |
+| Notebooks | Đã execute | Shape: 10 code cells, 8 inline figures, không error; Texture: 8 code cells, không error, blocker hiển thị inline |
+| Báo cáo tiếng Việt | Hoàn thành có điều kiện | `docs/tv4_report.md`; không đưa ra metric Texture khi chưa có dữ liệu |
 
-## Kết quả chính
+## Rework notebook-first
 
-- ResNet-50: Shape Bias 21,24% (95% bootstrap CI 18,52–24,09), 181 Shape / 671 Texture / 348 Neither.
-- ViT-B/16: Shape Bias 39,80% (95% bootstrap CI 36,45–43,12), 326 Shape / 493 Texture / 381 Neither.
-- ViT-B/16 cao hơn 18,56 điểm phần trăm trên benchmark Geirhos cue-conflict.
+`notebooks/shape_texture_bias.ipynb` là workflow thực nghiệm đầy đủ: cue-conflict
+intuition image, dataset grid/distribution, model/preprocessing setup,
+single-image inference từ hai model, minh họa mapping ImageNet→16 categories,
+cache hoặc full batch inference trực tiếp, Shape Bias/CI, ba chart và case-study
+grid được chọn có quy tắc từ prediction records.
 
-## Deliverables và tái chạy
+`notebooks/texture_robustness.ipynb` cùng có workflow thực thi trực tiếp: protocol
+parameters, manifest/model setup, grid transformation, single-image prediction,
+cache/full evaluation và failure analysis. Trong workspace hiện tại các cell cần
+pixel ImageNet thông báo và bỏ qua an toàn, không sinh prediction hoặc metric giả.
 
-- Script: `experiments/shape_texture_bias/run_shape_texture_bias.py`, `experiments/texture/run_texture_robustness.py`.
-- Kết quả Shape: `results/tv4/shape_texture_predictions.csv`, `shape_texture_summary.csv`, `shape_texture_metadata.json` và `results/tv4/figures/`.
-- Notebooks: `notebooks/shape_texture_bias.ipynb`, `notebooks/texture_robustness.ipynb`.
+## Kết quả Shape-vs-Texture Bias
+
+- ResNet-50: Shape Bias **21,24%** (95% bootstrap CI 18,52–24,09); 181 Shape / 671 Texture / 348 Neither.
+- ViT-B/16: Shape Bias **39,80%** (95% bootstrap CI 36,45–43,12); 326 Shape / 493 Texture / 381 Neither.
+- ViT-B/16 cao hơn **18,56 percentage points** trên 1.200 cue-conflict images hợp lệ.
+
+## Cách chạy lại
 
 ```bash
-# Shape (token cũ hết hạn: vô hiệu hóa token nhưng dataset vẫn public)
-HF_TOKEN='' HF_HUB_DISABLE_IMPLICIT_TOKEN=1 PYTHONPATH=.deps python3 experiments/shape_texture_bias/run_shape_texture_bias.py --allow-download --batch-size 64
+# Shape — dataset public/cache. Notebook tự dùng cache prediction hợp lệ nếu có.
+HF_TOKEN='' HF_HUB_DISABLE_IMPLICIT_TOKEN=1 PYTHONPATH=.deps python3 -m nbconvert --to notebook --execute --inplace notebooks/shape_texture_bias.ipynb
 
-# Texture: chỉ chạy sau khi nhóm khôi phục đúng 14 ImageNet validation shards
-PYTHONPATH=.deps python3 experiments/texture/run_texture_robustness.py --data-dir data/imagenet/data --allow-download --batch-size 64
+# Texture — chỉ sau khi tài khoản đã được cấp quyền ImageNet và 14 shards xuất hiện.
+PYTHONPATH=.deps python3 -m nbconvert --to notebook --execute --inplace notebooks/texture_robustness.ipynb
 ```
 
-## Lưu ý cần reviewer xử lý
+Hoặc mở notebook trong VS Code/Jupyter với Python environment có dependencies
+`requirements.txt` (cộng `datasets`, `opencv-python-headless`, `nbformat`,
+`nbconvert`) và chọn Run All.
 
-`data/imagenet/data/validation-00000-of-00014.parquet` đến shard 13 không có
-trong workspace. Đây là ImageNet gated dataset và token Hugging Face hiện tại
-đã hết hạn; không thể thay bằng data khác mà vẫn giữ protocol nhóm. Sau khi dữ
-liệu được đặt đúng đường dẫn, chạy lệnh texture ở trên sẽ tạo CSV và figures.
+## Blocker Texture có kiểm chứng
 
-## Tin nhắn bàn giao ngắn
+Không có `data/imagenet/data/validation-00000-of-00014.parquet` đến shard 13
+trong workspace/caches đã kiểm tra. Đã thử `snapshot_download` đúng repo/revision
+ILSVRC với token vô hiệu hóa; Hugging Face trả `401 GatedRepoError`. Cần đăng
+nhập tài khoản đã được chấp thuận license và tải đúng shards, không thay bằng
+dataset khác. Khi dữ liệu hợp lệ có mặt, Run All Texture notebook sẽ tạo demo,
+cache predictions, CSV summary và figures từ cùng manifest 10.000 IDs.
 
-> TV4 đã hoàn tất Shape-vs-Texture Bias trên 1.280 Geirhos cue-conflict images:
-> ResNet-50 đạt Shape Bias 21,24%, ViT-B/16 đạt 39,80% (ViT cao hơn 18,56 pp).
-> Code, notebook, CSV, figures và report nằm trong `experiments/`, `notebooks/`,
-> `results/tv4/`, `docs/tv4_report.md`. Texture Robustness đã có script đầy đủ
-> nhưng chưa thể chạy vì thiếu 14 ImageNet validation shards; khôi phục chúng vào
-> `data/imagenet/data/` rồi chạy lệnh trong `docs/tv4_handover.md`.
+## Deliverables và tin nhắn bàn giao
+
+- Notebooks: `notebooks/shape_texture_bias.ipynb`, `notebooks/texture_robustness.ipynb`.
+- Code: `experiments/shape_texture_bias/`, `experiments/texture/`.
+- Kết quả: `results/tv4/`, figures tại `results/tv4/figures/`.
+
+> TV4 đã rework notebooks theo notebook-first và execute Shape-vs-Texture Bias
+> đầy đủ: ResNet-50 Shape Bias 21,24%, ViT-B/16 39,80% (ViT cao hơn 18,56 pp).
+> Notebook Shape có dataset/prediction/figures/case studies inline. Texture có
+> workflow trực tiếp nhưng chưa chạy full vì ImageNet gated shards thiếu; cần
+> đăng nhập tài khoản đã có license và đặt đúng 14 shards tại `data/imagenet/data/`.
