@@ -1,0 +1,77 @@
+{
+  "run_id": "tv4_geirhos_1280_v1",
+  "dataset": "rgeirhos/texture-shape-cue-conflict",
+  "dataset_split": "test",
+  "expected_images": 1280,
+  "evaluated_images": 1280,
+  "seed": 42,
+  "batch_size": 64,
+  "mapping": "Official Geirhos 16-category mean-softmax mapping",
+  "models": {
+    "resnet50": {
+      "model_name": "resnet50",
+      "weights": "ResNet50_Weights.IMAGENET1K_V2",
+      "weights_url": "https://download.pytorch.org/models/resnet50-11ad3fa6.pth",
+      "checkpoint": "resnet50-11ad3fa6.pth",
+      "device": "cuda",
+      "torch_version": "2.15.0+cu132",
+      "torchvision_version": "0.29.2+cu132",
+      "preprocessing": {
+        "color_mode": "RGB",
+        "resize_size": [
+          232
+        ],
+        "crop_size": [
+          224
+        ],
+        "interpolation": "bilinear",
+        "antialias": true,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      }
+    },
+    "vit_b_16": {
+      "model_name": "vit_b_16",
+      "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+      "weights_url": "https://download.pytorch.org/models/vit_b_16-c867db91.pth",
+      "checkpoint": "vit_b_16-c867db91.pth",
+      "device": "cuda",
+      "torch_version": "2.15.0+cu132",
+      "torchvision_version": "0.29.2+cu132",
+      "preprocessing": {
+        "color_mode": "RGB",
+        "resize_size": [
+          256
+        ],
+        "crop_size": [
+          224
+        ],
+        "interpolation": "bilinear",
+        "antialias": true,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      }
+    }
+  },
+  "device": "cuda",
+  "torch": "2.15.0+cu132",
+  "git_revision": "9544b433c4b81eb7ff062ec51f19c9fd173a1ab5",
+  "git_tree_dirty": true,
+  "created_utc": "2026-11-05T11:53:44.762125+00:00"
+}
