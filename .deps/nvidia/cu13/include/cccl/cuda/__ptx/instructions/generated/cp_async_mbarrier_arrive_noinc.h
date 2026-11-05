@@ -1,0 +1,20 @@
+// This file was automatically generated. Do not edit.
+
+#ifndef _CUDA_PTX_GENERATED_CP_ASYNC_MBARRIER_ARRIVE_NOINC_H_
+#define _CUDA_PTX_GENERATED_CP_ASYNC_MBARRIER_ARRIVE_NOINC_H_
+
+/*
+// cp.async.mbarrier.arrive.noinc.b64 [addr]; // PTX ISA 70, SM_80
+template <typename = void>
+__device__ void cp_async_mbarrier_arrive_noinc(
+  uint64_t* addr);
+*/
+#if __cccl_ptx_isa >= 700
+template <typename = void>
+_CCCL_DEVICE_API void cp_async_mbarrier_arrive_noinc(::cuda::std::uint64_t* __addr)
+{
+  asm("cp.async.mbarrier.arrive.noinc.b64 [%0];" : : "r"(__as_ptr_smem(__addr)) : "memory");
+}
+#endif // __cccl_ptx_isa >= 700
+
+#endif // _CUDA_PTX_GENERATED_CP_ASYNC_MBARRIER_ARRIVE_NOINC_H_

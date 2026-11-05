@@ -1,0 +1,19 @@
+// This file was automatically generated. Do not edit.
+
+#ifndef _CUDA_PTX_GENERATED_CP_ASYNC_BULK_COMMIT_GROUP_H_
+#define _CUDA_PTX_GENERATED_CP_ASYNC_BULK_COMMIT_GROUP_H_
+
+/*
+// cp.async.bulk.commit_group; // PTX ISA 80, SM_90
+template <typename = void>
+__device__ void cp_async_bulk_commit_group();
+*/
+#if __cccl_ptx_isa >= 800
+template <typename = void>
+_CCCL_DEVICE_API void cp_async_bulk_commit_group()
+{
+  asm volatile("cp.async.bulk.commit_group;" : : :);
+}
+#endif // __cccl_ptx_isa >= 800
+
+#endif // _CUDA_PTX_GENERATED_CP_ASYNC_BULK_COMMIT_GROUP_H_

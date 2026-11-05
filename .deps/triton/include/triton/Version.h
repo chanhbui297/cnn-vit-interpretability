@@ -1,0 +1,6 @@
+#ifndef TRITON_VERSION_H
+#define TRITON_VERSION_H
+
+#define TRITON_VERSION "3.9.0"
+
+#endif // TRITON_VERSION_H
