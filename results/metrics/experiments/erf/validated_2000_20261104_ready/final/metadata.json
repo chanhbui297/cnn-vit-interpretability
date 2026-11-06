@@ -1,0 +1,75 @@
+{
+  "experiment": "erf",
+  "run_id": "validated_2000_20261104_ready",
+  "status": "complete",
+  "seed": 42,
+  "num_images": 2000,
+  "bootstrap_resamples": 20000,
+  "sensitivity_status": "pending_execution",
+  "cross_method_status": "awaiting_team_results",
+  "code": {
+    "git_revision": "25e2cf2eebfc430cf7124b1574277d649e15eaf4",
+    "git_dirty": true,
+    "file_sha256": {
+      "experiments/erf/erf_experiment.py": "f90b414df945d07d9088eabe2f2c03c97ad052af734e674730d416d4c0128efc",
+      "experiments/erf/erf_statistics.py": "a94dd5ca063f1680f6cd96f5dd102cda4490e6643d6adeb1ddeb7bbe6dde165a",
+      "experiments/erf/erf_workflow.py": "494ee221464bea4fd6ade8e8580637a173a9f065f3fe96f6a1a4544f194ba81a",
+      "notebooks/04_erf_2000.ipynb": "3dffa1029246cb59a1f389aeb4ccba44be31de8aecb7332d019b3bde90c898d1",
+      "src/models.py": "adee07f977219f031b4f832bdcd01a57640c5c4cf5865582cb3f61b76f85c41b",
+      "src/data.py": "7d2124f355325f7004f39b86f55e3975698ea2ac71e9351baffe94c2d7b7ecda",
+      "src/evaluation.py": "851d145c479c4f653692ed6d47519c7fd8f943796591ca7f4b72a4bdb48f5d46"
+    }
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "pandas": "2.2.3",
+    "scipy": "1.16.3"
+  },
+  "validation": "recomputed_from_original_csvs",
+  "sources": {
+    "official": {
+      "path": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\metrics\\experiments\\erf\\main_2000_official_20261103T160959_331099Z\\final",
+      "files": {
+        "metadata.json": "eab020145fbfcd637267d8e3d63020a6cd6bb9f58a3b7459d948248336558f29",
+        "metrics.csv": "ccc3896808fa41e8913168c92ca6e923a6a867a3d85e9a8df41b3b3186a042fc",
+        "paired_area90_difference.csv": "6a9c86852a0ac8d70d0a4013056d07e5708ae7f332ce2f42af220f49cc6f2861",
+        "selected_images.csv": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237",
+        "summary.csv": "ccf67efc4a4da84b6e76754b7f28d43a05d924e6771779e330a5a19b581b3204"
+      }
+    },
+    "shared_vit_crop": {
+      "path": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\metrics\\experiments\\erf\\main_2000_shared_vit_crop_20261103T161602_476613Z\\final",
+      "files": {
+        "metadata.json": "6864784cb6e2bceffd98b8c0b9166d73c29e3be042d023008f99a91687d504a2",
+        "metrics.csv": "754c8b940257bada173189a1d840653ca6ad622759653af4560c03da39ea805c",
+        "selected_images.csv": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237",
+        "summary.csv": "49d671512c5a834b51c685dbc14458e4fea68b276e97cf9fe0b4828ad553b66f"
+      }
+    },
+    "paired": {
+      "path": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\metrics\\experiments\\erf\\paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z\\final",
+      "files": {
+        "crop_sensitivity.csv": "a8fda5e28170fced819f547ff10fbbc5e07bc421311c9107ce141786d120c75c",
+        "metadata.json": "6cf59a4e2c9bb8fdb3bf0286c94139908043cb831e88b56c11226a4a03a049eb",
+        "official_metrics.csv": "8f6591aa104b5943917b03b1b6b8697345bd52cbfebab55c04e3026bea70db2a",
+        "paired_differences.csv": "3040f867f1d41a43bf81dc3bcc37f0a4a6c8c86de9fe97fbfd1fd51a214eb928",
+        "paired_tests.csv": "7742e837f94d0a19df3de9fb2f4d7b6744ab675ba8bce1264079199ace63527b",
+        "selected_images.csv": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237",
+        "shared_vit_crop_metrics.csv": "3675ee254867672cc068cc39d92dc79ba2cd281dc9da141d91d276ccad8bee7e"
+      }
+    }
+  },
+  "cohort_sha256_lf": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237",
+  "figures_dir": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\figures\\experiments\\erf\\validated_2000_20261104_ready\\final",
+  "artifact_sha256": {
+    "crop_sensitivity.csv": "717a3d14356395fbcc5628541fa4a81989add073a30b86df7d26a854c8ed1abc",
+    "cross_method_handoff.csv": "a2965b640741075ada56f2c198591f30a2426052157837f1892f0faaa14282f2",
+    "official_metrics.csv": "48132d2e51b884b27ce3951423c209e9d1d6ec1f988dd6fb5dfa58a13b1177dd",
+    "paired_differences.csv": "e56dac31b4bcfdc2066ba6cbe87d58f8f2ee0ef3ce8759edafa04bdee721bb95",
+    "paired_distribution_summary.csv": "4a53636733f690513a065a48dcf6a5b5668c455d7ed3c72ef2e5f3731db1ba71",
+    "paired_tests.csv": "a27ad561aa4cf2f87d8bd6a305a7340f063756537db96188b921a20996fd1898",
+    "selected_images.csv": "a51d09604d18b4c28fa261246986cef31f42a6a839dbe4c6b5019411e2d3db19",
+    "sensitivity_selected_images.csv": "08b3dec133e4246b0726eccc6d7d89c89bb5d1fad2df40885a5d1e13221ff951",
+    "shared_vit_crop_metrics.csv": "cb6b985925f2bde179f8f735d451a832dc29d768b931f14216d8859cee4a6699"
+  }
+}

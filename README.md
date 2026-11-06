@@ -2,7 +2,7 @@
 
 A Computer Vision final project comparing ResNet50 (a convolutional neural network, or CNN) and ViT-B/16 (a Vision Transformer). The goal is to explore how they use image information and respond to image changes. The selected weights are IMAGENET1K_V2 for ResNet50 and IMAGENET1K_V1 for ViT-B/16.
 
-The repository includes a baseline evaluator for the locally downloaded ImageNet-1K validation split. See [baseline instructions](docs/baseline.md) for full evaluation on all 50,000 validation images. The [ERF tutorial](notebooks/04_erf.ipynb) provides a step-by-step Vietnamese notebook for member 3, with [setup and methodology notes](docs/erf.md). Other interpretability and robustness experiments are not implemented yet.
+The repository includes a baseline evaluator for the ImageNet-1K validation split. See [baseline instructions](docs/baseline.md) for the evaluation on all 50,000 validation images. The [ERF notebook](notebooks/04_erf.ipynb) runs the 2,000-image comparison and two sensitivity probes on the same 200 images. The [ERF guide](docs/erf.md) covers setup, reproduction, and the Attention/Grad-CAM handoff. See the [ERF report](report/erf.md) for the audited results.
 
 ## Verified Baseline Results
 

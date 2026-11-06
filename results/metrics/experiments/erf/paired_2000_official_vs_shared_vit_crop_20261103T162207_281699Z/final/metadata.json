@@ -1,0 +1,221 @@
+{
+  "experiment": "erf",
+  "run_id": "paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z",
+  "status": "complete",
+  "num_images": 2000,
+  "num_classes": 1000,
+  "images_per_class": 2,
+  "seed": 42,
+  "bootstrap_resamples": 20000,
+  "cohort_kind": "class_balanced_2000_subset",
+  "selection_rule": "random.Random(seed); labels ascending 0..999; sample 2 from each ID-sorted class of the shared manifest; no correctness filtering",
+  "exclusions": [],
+  "batch_size": 1,
+  "device": "cuda",
+  "sample_size_rationale": {
+    "pilot_paired_sd_A90_pp": 11.127155,
+    "target_pointwise_ci95_half_width_pp": 0.5,
+    "normal_approximation_n": 1903,
+    "chosen_n": 2000,
+    "reason": "planning precision; 2 images for each of 1000 classes",
+    "limitation": "planning estimate, not a guaranteed CI or Wilcoxon power"
+  },
+  "manifest": "/content/drive/MyDrive/cnn-vit-interpretability/data/manifests/analysis_10000_seed42.csv",
+  "manifest_sha256": "eea185ba9e733636eb245c8d4eab3137f91af4be3d9a5f3766a48bf11d7b057f",
+  "cohort_sha256_lf": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237",
+  "code": {
+    "git_revision": "a9ef4593633b72f45906ed5e5d1d358226cfb41e",
+    "git_dirty": true,
+    "file_sha256": {
+      "src/evaluate_baseline.py": "20772a08de048cff763c75012ca06146267b49515615c8a62b77628aaea0f6d4",
+      "src/models.py": "adee07f977219f031b4f832bdcd01a57640c5c4cf5865582cb3f61b76f85c41b",
+      "src/data.py": "7d2124f355325f7004f39b86f55e3975698ea2ac71e9351baffe94c2d7b7ecda",
+      "src/evaluation.py": "851d145c479c4f653692ed6d47519c7fd8f943796591ca7f4b72a4bdb48f5d46"
+    }
+  },
+  "models": {
+    "official": {
+      "vit_b_16": {
+        "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+        "transform": "ImageClassification(\n    crop_size=[224]\n    resize_size=[256]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+        "baseline_loader": {
+          "model_name": "vit_b_16",
+          "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+          "weights_url": "https://download.pytorch.org/models/vit_b_16-c867db91.pth",
+          "checkpoint": "vit_b_16-c867db91.pth",
+          "device": "cuda",
+          "torch_version": "2.11.0+cu130",
+          "torchvision_version": "0.26.0+cu130",
+          "preprocessing": {
+            "color_mode": "RGB",
+            "resize_size": [
+              256
+            ],
+            "crop_size": [
+              224
+            ],
+            "interpolation": "bilinear",
+            "antialias": true,
+            "mean": [
+              0.485,
+              0.456,
+              0.406
+            ],
+            "std": [
+              0.229,
+              0.224,
+              0.225
+            ]
+          }
+        }
+      },
+      "resnet50": {
+        "weights": "ResNet50_Weights.IMAGENET1K_V2",
+        "transform": "ImageClassification(\n    crop_size=[224]\n    resize_size=[232]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+        "baseline_loader": {
+          "model_name": "resnet50",
+          "weights": "ResNet50_Weights.IMAGENET1K_V2",
+          "weights_url": "https://download.pytorch.org/models/resnet50-11ad3fa6.pth",
+          "checkpoint": "resnet50-11ad3fa6.pth",
+          "device": "cuda",
+          "torch_version": "2.11.0+cu130",
+          "torchvision_version": "0.26.0+cu130",
+          "preprocessing": {
+            "color_mode": "RGB",
+            "resize_size": [
+              232
+            ],
+            "crop_size": [
+              224
+            ],
+            "interpolation": "bilinear",
+            "antialias": true,
+            "mean": [
+              0.485,
+              0.456,
+              0.406
+            ],
+            "std": [
+              0.229,
+              0.224,
+              0.225
+            ]
+          }
+        }
+      }
+    },
+    "shared_vit_crop": {
+      "vit_b_16": {
+        "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+        "transform": "ImageClassification(\n    crop_size=[224]\n    resize_size=[256]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+        "baseline_loader": {
+          "model_name": "vit_b_16",
+          "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+          "weights_url": "https://download.pytorch.org/models/vit_b_16-c867db91.pth",
+          "checkpoint": "vit_b_16-c867db91.pth",
+          "device": "cuda",
+          "torch_version": "2.11.0+cu130",
+          "torchvision_version": "0.26.0+cu130",
+          "preprocessing": {
+            "color_mode": "RGB",
+            "resize_size": [
+              256
+            ],
+            "crop_size": [
+              224
+            ],
+            "interpolation": "bilinear",
+            "antialias": true,
+            "mean": [
+              0.485,
+              0.456,
+              0.406
+            ],
+            "std": [
+              0.229,
+              0.224,
+              0.225
+            ]
+          }
+        }
+      },
+      "resnet50": {
+        "weights": "ResNet50_Weights.IMAGENET1K_V2",
+        "transform": "ImageClassification(\n    crop_size=[224]\n    resize_size=[256]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+        "baseline_loader": {
+          "model_name": "resnet50",
+          "weights": "ResNet50_Weights.IMAGENET1K_V2",
+          "weights_url": "https://download.pytorch.org/models/resnet50-11ad3fa6.pth",
+          "checkpoint": "resnet50-11ad3fa6.pth",
+          "device": "cuda",
+          "torch_version": "2.11.0+cu130",
+          "torchvision_version": "0.26.0+cu130",
+          "preprocessing": {
+            "color_mode": "RGB",
+            "resize_size": [
+              232
+            ],
+            "crop_size": [
+              224
+            ],
+            "interpolation": "bilinear",
+            "antialias": true,
+            "mean": [
+              0.485,
+              0.456,
+              0.406
+            ],
+            "std": [
+              0.229,
+              0.224,
+              0.225
+            ]
+          }
+        }
+      }
+    }
+  },
+  "target": "mean(square(center_feature_vector)); post-stage/post-block, pre-final-LN",
+  "layers": {
+    "resnet50": [
+      "layer1",
+      "layer2",
+      "layer3",
+      "layer4"
+    ],
+    "vit_b_16": [
+      "block3",
+      "block6",
+      "block9",
+      "block12"
+    ]
+  },
+  "gradient_coordinates": "RGB [0,1] AFTER resize/crop, BEFORE normalization",
+  "metrics_dir": "/content/drive/MyDrive/cnn-vit-interpretability/results/metrics/experiments/erf/paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z/final",
+  "figures_dir": "/content/drive/MyDrive/cnn-vit-interpretability/results/figures/experiments/erf/paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z/final",
+  "ci": "paired-image percentile bootstrap; pointwise 95%; not multiplicity-adjusted",
+  "ci_resampling_unit": "image pair; class quotas not fixed within resamples",
+  "test": "two-sided Wilcoxon signed-rank, zero_method=wilcox, method=auto",
+  "wilcoxon_difference_round_decimals": 12,
+  "multiplicity": "Holm over all 16 model comparisons; alpha=0.05",
+  "crop_sensitivity": "descriptive paired gap changes, pointwise bootstrap CIs",
+  "versions": {
+    "numpy": "2.4.6",
+    "pandas": "2.2.3",
+    "scipy": "1.16.3",
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130"
+  },
+  "runs": {
+    "official": {
+      "path": "/content/drive/MyDrive/cnn-vit-interpretability/results/metrics/experiments/erf/main_2000_official_20261103T160959_331099Z/final",
+      "metrics_sha256": "ccc3896808fa41e8913168c92ca6e923a6a867a3d85e9a8df41b3b3186a042fc",
+      "selected_images_sha256": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237"
+    },
+    "shared_vit_crop": {
+      "path": "/content/drive/MyDrive/cnn-vit-interpretability/results/metrics/experiments/erf/main_2000_shared_vit_crop_20261103T161602_476613Z/final",
+      "metrics_sha256": "754c8b940257bada173189a1d840653ca6ad622759653af4560c03da39ea805c",
+      "selected_images_sha256": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237"
+    }
+  }
+}
