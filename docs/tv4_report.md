@@ -1,81 +1,51 @@
-# Báo cáo TV4 — Texture Robustness và Shape-vs-Texture Bias
+# Báo cáo TV4 — Controlled Cue Perturbation và Shape-vs-Texture Bias
 
 ## Methodology
 
-TV4 so sánh ResNet-50 `IMAGENET1K_V2` với ViT-B/16 `IMAGENET1K_V1`, giữ nguyên
-`weights.transforms()` của torchvision. Cả hai dùng RGB, ImageNet normalization
-và crop 224; resize cạnh ngắn là 232 (ResNet) và 256 (ViT) theo checkpoint.
+TV4 so sánh ResNet-50 `IMAGENET1K_V2` với ViT-B/16 `IMAGENET1K_V1`, giữ nguyên `weights.transforms()` của torchvision: RGB, ImageNet normalization, crop 224 và resize cạnh ngắn 232/256 tương ứng. Không train lại model.
 
-### Shape-vs-Texture Bias
+### Baseline cue-conflict
 
-Benchmark `rgeirhos/texture-shape-cue-conflict` có 1.280 ảnh, 16 categories,
-shape cue và texture cue. 80 ảnh có hai cue trùng nhau được loại, còn 1.200 ảnh
-conflict hợp lệ. Với mỗi output ImageNet-1K, softmax probabilities của các class
-trong từng category được lấy **trung bình** theo danh sách indices chính thức
-của Geirhos et al.; category có score cao nhất là decision. Shape Bias là
-`N_shape / (N_shape + N_texture)`; Neither nằm ngoài mẫu số. Khoảng tin cậy
-95% dùng 2.000 bootstrap samples, seed 42.
+Benchmark `rgeirhos/texture-shape-cue-conflict` có 1.280 ảnh, 16 categories. Loại 80 ảnh có shape cue trùng texture cue, còn 1.200 ảnh conflict hợp lệ. Mỗi output ImageNet-1K được softmax rồi lấy **trung bình** theo official 1.000-to-16 mapping của Geirhos et al. Category score cao nhất được so với shape/texture cue để cho Shape, Texture hoặc Neither. `Shape Bias = N_shape / (N_shape + N_texture)`; Neither nằm ngoài mẫu số, vì vậy báo thêm coverage.
 
-### Texture Robustness
+### Controlled Cue Perturbation
 
-Protocol cố định dùng manifest nhóm 10.000 ImageNet validation images (10/class).
-Gaussian blur có `(kernel, sigma)=(5,1),(9,2),(15,4)`; bilateral filter có
-`(d, sigmaColor, sigmaSpace)=(5,25,25),(9,50,50),(13,100,100)`. Các phép biến
-đổi xảy ra trên RGB gốc, trước preprocessing, và giữ nguyên kích thước/nhãn.
-Metrics dự kiến là Top-1, accuracy drop theo percentage points, prediction
-consistency và paired bootstrap CI. Đây là sensitivity to **texture-detail
-degradation**, không cô lập texture bias thuần túy.
+**Research question:** *Does a higher shape bias imply stronger reliance on global shape information?* Cùng 1.200 image IDs đi qua clean, Gaussian Blur và deterministic Patch Shuffle trước official preprocessing. Blur dùng `(kernel, sigma)=(7,1,5)` và `(13,3,0)`. Shuffle dùng tile 48 px/32 px; seed ổn định từ `(image_id, 42)` được chia sẻ giữa hai model. Outcome gồm decisions, coverage, clean→perturbed transition và paired-bootstrap CI (4.000 resamples) cho thay đổi Shape Bias.
+
+Pilot phân tầng 160 ảnh (10/shape category) loại shuffle 16 px vì coverage chỉ còn 15,6% cho ResNet và 25,6% cho ViT. Study không trùng TV1 Occlusion, TV2/TV3 Attention/ERF hay TV5 Adversarial Cropping: nó đo paired cue-decision transitions trên cue-conflict, không đo saliency hay crop robustness.
 
 ## Results
 
-Shape-vs-Texture Bias đã chạy full trên RTX 3060, batch 64:
+### Baseline đã xác minh
 
-| Model | Valid conflict | Shape | Texture | Neither | Coverage | Shape Bias (95% CI) |
-|---|---:|---:|---:|---:|---:|---:|
-| ResNet-50 | 1.200 | 181 | 671 | 348 | 71,00% | 21,24% (18,52–24,09) |
-| ViT-B/16 | 1.200 | 326 | 493 | 381 | 68,25% | 39,80% (36,45–43,12) |
+| Model | Shape | Texture | Neither | Coverage | Shape Bias (95% CI) |
+|---|---:|---:|---:|---:|---:|
+| ResNet-50 | 181 | 671 | 348 | 71,00% | 21,24% (18,52–24,09) |
+| ViT-B/16 | 326 | 493 | 381 | 68,25% | 39,80% (36,45–43,12) |
 
-ViT-B/16 cao hơn 18,56 percentage points Shape Bias trên các cue decisions.
-Số liệu nguồn là `results/tv4/shape_texture_*.csv`; metadata lưu seed,
-preprocessing, checkpoint, CUDA và Git revision.
+ViT cao hơn 18,56 pp Shape Bias trên cue decisions.
 
-Texture Robustness chưa có metric: 14 ImageNet validation Parquet shards không
-có tại `data/imagenet/data/`. Đã tìm các workspace/caches/config liên quan và
-thử `snapshot_download` đúng repo/revision ILSVRC; lượt tải không xác thực trả
-`401 GatedRepoError`. Không thay thế ImageNet hay suy diễn kết quả từ baseline.
+### Controlled Cue Perturbation
 
-## Notebook-first execution
+| Condition | ResNet Shape Bias / coverage | ViT Shape Bias / coverage |
+|---|---:|---:|
+| Clean | 21,24% / 71,00% | 39,80% / 68,25% |
+| Blur S1 | 48,86% / 54,75% | 66,76% / 58,17% |
+| Blur S2 | 72,05% / 42,33% | 83,88% / 48,08% |
+| Shuffle 48 px | 8,81% / 66,25% | 13,90% / 61,17% |
+| Shuffle 32 px | 7,86% / 57,25% | 9,90% / 52,17% |
 
-`notebooks/shape_texture_bias.ipynb` đã được execute từ đầu đến cuối, không có
-cell error. Notebook chứa trực tiếp cue-conflict intuition image, dataset grid
-và distribution, model setup, single-image inference thực của cả hai model,
-minh họa mapping 16 categories, cache/full inference logic, summary, ba biểu đồ
-inline và case studies được chọn bằng prediction records. Cache chỉ được dùng
-khi schema/model/mapping khớp; ngược lại notebook gọi utility batch inference,
-không gọi CLI ngoài notebook.
+Blur S1 thay đổi Shape Bias so với clean **+27,61 pp** cho ResNet (paired 95% CI +24,33–+30,90) và **+26,96 pp** cho ViT (+23,52–+30,39). Blur S2 tăng +50,80 pp/+44,08 pp nhưng có 692/1.200 và 623/1.200 Neither. Shuffle 32 px giảm **−13,38 pp** cho ResNet (−16,09–−10,58) và **−29,90 pp** cho ViT (−33,65–−26,40). Prediction, summary và transition matrices nằm tại `results/tv4/controlled_perturbation_*.csv`.
 
-`notebooks/texture_robustness.ipynb` cũng execute không lỗi trong state hiện tại.
-Model/manifest/protocol có output; cells cần raw ImageNet pixels hiển thị blocker
-và bỏ qua an toàn. Khi tài khoản đã được chấp thuận license tải 14 shards vào
-đúng đường dẫn, Run All notebook sẽ trực tiếp tạo transformation grids,
-single-image prediction, cache, summary và figures.
+## Discussion
 
-## Discussion và limitations
+Kết quả không hỗ trợ suy luận đơn giản “Shape Bias cao hơn ⇒ reliance mạnh hơn vào global shape”. Blur tăng Shape Bias ở cả hai model, nhưng đồng thời giảm coverage và tăng Neither; patch shuffle cho pattern ngược lại. Vì Blur chỉ attenuate high-frequency detail (có thể làm yếu edges) và Shuffle chỉ phá layout (vẫn giữ local tiles, tạo artificial boundaries), đây là evidence về **response sensitivity under interventions**, không phải phép đo trực tiếp global-shape representation.
 
-Trên benchmark này, ViT-B/16 chọn shape cue thường xuyên hơn ResNet-50 và hai
-bootstrap interval không chồng nhau trong run hiện tại. Đây là quan sát cho một
-cặp pretrained checkpoint và 16 entry-level categories, không chứng minh mọi
-ViT đều shape-biased hơn mọi CNN. Neither đáng kể (29,0% ResNet; 31,75% ViT
-trong conflict images) nên cần được báo cáo cùng coverage.
-
-Hai experiments sẽ bổ sung nhau khi Texture Robustness hoàn tất, nhưng shape
-bias cao hơn không tự động suy ra accuracy giảm ít hơn dưới blur. Style-transfer
-stimuli, resize riêng mỗi checkpoint và bootstrap sampling đều giới hạn diễn
-giải nhân quả/khái quát hóa.
+Điều này phù hợp với cảnh báo của Hermann et al. rằng apparent bias còn phụ thuộc data/training protocol, và với Burgert et al. rằng forced-choice cue-conflict không đủ để kết luận feature reliance. Không tuyên bố novelty hay cơ chế attention/receptive-field. Raw ImageNet validation pixels chưa có do gated data, nên không báo cáo clean-ImageNet classification degradation; workflow ImageNet độc lập vẫn chờ dữ liệu hợp lệ.
 
 ## References
 
 1. Geirhos, R. et al. (2019). *ImageNet-trained CNNs are biased towards texture; increasing shape bias improves accuracy and robustness*. ICLR. https://openreview.net/forum?id=Bygh9j09KX
-2. Official mapping and materials: https://github.com/rgeirhos/texture-vs-shape
-3. Cue-conflict dataset: https://huggingface.co/datasets/rgeirhos/texture-shape-cue-conflict
-4. Torchvision model weights: https://pytorch.org/vision/stable/models.html
+2. Official mapping and dataset: https://github.com/rgeirhos/texture-vs-shape ; https://huggingface.co/datasets/rgeirhos/texture-shape-cue-conflict
+3. Hermann, K. L., Chen, T. & Kornblith, S. (2020). *The Origins and Prevalence of Texture Bias in Convolutional Neural Networks*. NeurIPS. https://proceedings.neurips.cc/paper/2020/hash/db5f9f42a7157abe65bb145000b5871a-Abstract.html
+4. Burgert, T., Stoll, O., Rota, P. & Demir, B. (2025). *ImageNet-trained CNNs are not biased towards texture: Revisiting feature reliance through controlled suppression*. NeurIPS. https://proceedings.neurips.cc/paper_files/paper/2025/hash/57a9b97477b67936298489e3c1417b0a-Abstract-Conference.html

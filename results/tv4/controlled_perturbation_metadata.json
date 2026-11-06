@@ -1,0 +1,50 @@
+{
+  "study": "controlled_cue_perturbation_v1",
+  "dataset": "rgeirhos/texture-shape-cue-conflict",
+  "dataset_split": "test",
+  "evaluated_images": 1200,
+  "excluded_same_cue": 80,
+  "seed": 42,
+  "batch_size": 64,
+  "conditions": {
+    "clean": {
+      "family": "clean",
+      "severity": 0
+    },
+    "blur_s1": {
+      "family": "gaussian_blur",
+      "severity": 1,
+      "kernel_size": 7,
+      "sigma": 1.5
+    },
+    "blur_s2": {
+      "family": "gaussian_blur",
+      "severity": 2,
+      "kernel_size": 13,
+      "sigma": 3.0
+    },
+    "shuffle_48": {
+      "family": "patch_shuffle",
+      "severity": 1,
+      "tile_size": 48
+    },
+    "shuffle_32": {
+      "family": "patch_shuffle",
+      "severity": 2,
+      "tile_size": 32
+    }
+  },
+  "clean_parity": "matched original Shape/Texture/Neither counts for both models",
+  "pilot": {
+    "cohort_size": 160,
+    "design": "10 valid conflict images per shape category",
+    "dropped_condition": "shuffle_16",
+    "reason": "cue-decision coverage 15.6% ResNet / 25.6% ViT was too destructive"
+  },
+  "limitations": [
+    "Gaussian blur attenuates high-frequency detail but does not remove all texture or preserve all shape evidence.",
+    "Patch shuffle disrupts spatial layout while retaining tiles; it creates artificial boundaries and changes local context.",
+    "The interventions are evidence about response sensitivity, not a direct measurement of global-shape representation."
+  ],
+  "created_utc": "2026-11-06T12:36:14.555161+00:00"
+}
