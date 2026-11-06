@@ -17,11 +17,30 @@ The Top-1 gap is 0.222 percentage points in favor of ViT. These measurements do 
 
 ## Project Objectives
 
-- Compare models with similar accuracy to make the analysis more meaningful.
-- Use Grad-CAM and attention maps to explore which image regions influence predictions.
-- Study effective receptive fields (ERF): which input regions affect model responses.
-- Measure robustness to occlusion (hidden image regions) and texture changes.
-- Optionally explore whether models rely more on object shape or texture.
+Compare ResNet50 and ViT-B/16 to investigate **what vision transformers see that
+CNNs do not**, using three directions: interpretability, robustness, and
+representation analysis. Use the verified 50,000-image baseline as a reference
+and the shared 10,000-image analysis manifest for subsequent ImageNet experiments.
+Report the measured accuracy gap when interpreting differences between models.
+
+**Core tasks**
+
+- **Attention Maps:** visualize ViT attention to explore relationships between image regions.
+- **Grad-CAM:** compare class-specific attribution maps for ResNet50 and ViT-B/16.
+- **Effective Receptive Field (ERF):** study which input regions affect selected responses in each model.
+- **Occlusion Robustness:** measure prediction accuracy changes when image regions are hidden.
+- **Texture Robustness:** measure prediction accuracy changes under agreed texture transformations.
+
+**Extensions**
+
+- **Shape-vs-Texture Bias:** investigate reliance on object shape versus texture using appropriate stimuli and labels.
+- **Adversarial Cropping:** evaluate robustness to crops selected under an agreed search strategy and budget.
+- **Layer-wise Centered Kernel Alignment (CKA):** compare learned representations across layers of the two models.
+
+These are planned experiments; the shared infrastructure is available, but the
+experiment implementations are not yet included. Prioritize core tasks before
+extensions. Experiment-specific methodology must be agreed separately; see the
+[shared experiment protocol](docs/experiment_protocol.md).
 
 These visualizations are complementary tools; attention maps alone are not proof of what causes a prediction.
 
@@ -40,9 +59,11 @@ experiments/
   occlusion/                     # Occlusion robustness experiments
   texture/                       # Texture robustness experiments
   shape_texture_bias/            # Optional shape-versus-texture analysis
+  adversarial_cropping/          # Optional cropping extension
+  cka/                          # Optional representation analysis
 results/
-  figures/                       # Generated plots (ignored by Git)
-  metrics/                       # Approved baseline CSVs; other outputs ignored
+  figures/                       # Final experiment figures may be tracked
+  metrics/                       # Baseline CSVs and final experiment CSV/JSON
 report/                          # Report source files and write-up
 requirements.txt                 # Python dependencies
 ```
@@ -57,3 +78,31 @@ Empty folders contain a `.gitkeep` placeholder so Git can track them. Raw datase
 4. Inspect the saved results first. To check local data without inference, run `.\.venv\Scripts\python.exe src/evaluate_baseline.py --check-data`.
 
 Baseline commands, preprocessing, and output details are documented in [docs/baseline.md](docs/baseline.md). Rerunning evaluation is optional and overwrites its result files; preserve the validated CSVs when preparing commits.
+
+## Shared experiment infrastructure — Phase 1
+
+Shared modules provide consistent model loading, image access, and accuracy
+calculation for all team members. Experiment algorithms are not implemented yet.
+
+| File | Purpose | Output |
+| --- | --- | --- |
+| `src/models.py` | `load_model("resnet50")` or `load_model("vit_b_16")` with the fixed baseline weights | Model in eval mode, official transform, and metadata |
+| `src/data.py` | `load_analysis_manifest()` reads the image selection; `iter_analysis_images(records)` reads selected images from Parquet | Tuples of `(PIL RGB image, label, image_id)` |
+| `src/evaluation.py` | `evaluate()` runs batched inference; `accuracy_drop()` compares against clean predictions on the same IDs; `save_predictions()` writes CSV | Predictions, Top-1/Top-5 accuracy in percent, absolute drop in pp, and relative drop in percent |
+| `docs/experiment_protocol.md` | Dataset, seed, ID joins, result storage, and notebook examples | Shared guidelines for the team |
+
+Workflow: **select IDs → read RGB images → load model/transform → implement
+the experiment → calculate and save results**. For Grad-CAM/ERF, use the model
+directly with autograd; do not use the inference function to calculate gradients.
+
+Importing modules or loading a model does not write result files.
+`save_predictions()` writes CSV and refuses overwrites by default. Store final
+deliverables in `results/metrics/experiments/<experiment>/<run_id>/final/`, with
+the corresponding figure folders under `results/figures/experiments/`.
+See the [protocol and examples](docs/experiment_protocol.md).
+
+Verification on the same five images with both models confirmed correct IDs
+and labels, baseline preprocessing and Top-5 predictions, working autograd, and
+CSV joins by ID. The temporary verification script and generated CSV/JSON files
+were removed after checking. These checks are not research experiment results;
+the original baseline files remain unchanged.
