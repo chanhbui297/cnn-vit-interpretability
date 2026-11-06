@@ -1,0 +1,137 @@
+{
+  "experiment": "erf",
+  "run_id": "main_2000_official_20261103T160959_331099Z",
+  "status": "complete",
+  "num_images": 2000,
+  "seed": 42,
+  "device": "cuda",
+  "torch": "2.11.0+cu130",
+  "torchvision": "0.26.0+cu130",
+  "numpy": "2.4.6",
+  "pandas": "2.2.3",
+  "preprocessing": "official",
+  "condition": "official",
+  "severity": "",
+  "batch_size": 1,
+  "allow_download": true,
+  "checkpoint_every": 50,
+  "target": "mean(square(center_feature_vector)); post-stage/post-block, pre-final-LN",
+  "center_rule": "row=grid_height//2, col=grid_width//2; zero-based",
+  "gradient_coordinates": "RGB [0,1] AFTER resize/crop, BEFORE normalization",
+  "layers": {
+    "resnet50": [
+      "layer1",
+      "layer2",
+      "layer3",
+      "layer4"
+    ],
+    "vit_b_16": [
+      "block3",
+      "block6",
+      "block9",
+      "block12"
+    ]
+  },
+  "models": {
+    "vit_b_16": {
+      "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+      "transform": "ImageClassification(\n    crop_size=[224]\n    resize_size=[256]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+      "baseline_loader": {
+        "model_name": "vit_b_16",
+        "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+        "weights_url": "https://download.pytorch.org/models/vit_b_16-c867db91.pth",
+        "checkpoint": "vit_b_16-c867db91.pth",
+        "device": "cuda",
+        "torch_version": "2.11.0+cu130",
+        "torchvision_version": "0.26.0+cu130",
+        "preprocessing": {
+          "color_mode": "RGB",
+          "resize_size": [
+            256
+          ],
+          "crop_size": [
+            224
+          ],
+          "interpolation": "bilinear",
+          "antialias": true,
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ]
+        }
+      }
+    },
+    "resnet50": {
+      "weights": "ResNet50_Weights.IMAGENET1K_V2",
+      "transform": "ImageClassification(\n    crop_size=[224]\n    resize_size=[232]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+      "baseline_loader": {
+        "model_name": "resnet50",
+        "weights": "ResNet50_Weights.IMAGENET1K_V2",
+        "weights_url": "https://download.pytorch.org/models/resnet50-11ad3fa6.pth",
+        "checkpoint": "resnet50-11ad3fa6.pth",
+        "device": "cuda",
+        "torch_version": "2.11.0+cu130",
+        "torchvision_version": "0.26.0+cu130",
+        "preprocessing": {
+          "color_mode": "RGB",
+          "resize_size": [
+            232
+          ],
+          "crop_size": [
+            224
+          ],
+          "interpolation": "bilinear",
+          "antialias": true,
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ]
+        }
+      }
+    }
+  },
+  "exclusions": [],
+  "selection_rule": "random.Random(seed); labels ascending 0..999; sample 2 from each ID-sorted class of the shared manifest; no correctness filtering",
+  "cohort_kind": "class_balanced_2000_subset",
+  "num_classes": 1000,
+  "images_per_class": 2,
+  "manifest": "/content/drive/MyDrive/cnn-vit-interpretability/data/manifests/analysis_10000_seed42.csv",
+  "manifest_sha256": "eea185ba9e733636eb245c8d4eab3137f91af4be3d9a5f3766a48bf11d7b057f",
+  "selected_images_sha256": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237",
+  "cohort_sha256_lf": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237",
+  "preview_ids": [
+    "ILSVRC2012_val_00015943_n04310018.JPEG",
+    "ILSVRC2012_val_00021897_n02871525.JPEG",
+    "ILSVRC2012_val_00024858_n02325366.JPEG"
+  ],
+  "raw_maps": "previews_only",
+  "metrics_dir": "/content/drive/MyDrive/cnn-vit-interpretability/results/metrics/experiments/erf/main_2000_official_20261103T160959_331099Z/final",
+  "figures_dir": "/content/drive/MyDrive/cnn-vit-interpretability/results/figures/experiments/erf/main_2000_official_20261103T160959_331099Z/final",
+  "code": {
+    "git_revision": "a9ef4593633b72f45906ed5e5d1d358226cfb41e",
+    "git_dirty": true,
+    "file_sha256": {
+      "src/evaluate_baseline.py": "20772a08de048cff763c75012ca06146267b49515615c8a62b77628aaea0f6d4",
+      "src/models.py": "adee07f977219f031b4f832bdcd01a57640c5c4cf5865582cb3f61b76f85c41b",
+      "src/data.py": "7d2124f355325f7004f39b86f55e3975698ea2ac71e9351baffe94c2d7b7ecda",
+      "src/evaluation.py": "851d145c479c4f653692ed6d47519c7fd8f943796591ca7f4b72a4bdb48f5d46"
+    }
+  },
+  "metric_units": {
+    "area50_fraction": "fraction of input pixels",
+    "area90_fraction": "fraction of input pixels",
+    "dispersion_normalized": "normalized-coordinate RMS distance"
+  }
+}
