@@ -1,0 +1,170 @@
+[
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_analysis_200_20261104T135825_603042Z/final/metadata.json",
+    "size": 2463,
+    "name": "metadata.json",
+    "source_url": "https://drive.google.com/file/d/15swC_SZuCfepKPizW_bumpfTuAPk0ESa/view?usp=drivesdk",
+    "file_id": "15swC_SZuCfepKPizW_bumpfTuAPk0ESa",
+    "sha256": "7217e64fa29810698e45dfd7b7443afbd8a678aa901627322e6b5db2683cad8d"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_analysis_200_20261104T135825_603042Z/final/sensitivity_paired_differences.csv",
+    "size": 918002,
+    "name": "sensitivity_paired_differences.csv",
+    "source_url": "https://drive.google.com/file/d/1wq6neqdyjFvxZ3AacmVqNFQYozYDal3C/view?usp=drivesdk",
+    "file_id": "1wq6neqdyjFvxZ3AacmVqNFQYozYDal3C",
+    "sha256": "c23837fe20d7ab694b2a73155d0f3b05d9235e952dd264e5fe470f6e43752360"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_analysis_200_20261104T135825_603042Z/final/sensitivity_summary.csv",
+    "size": 4250,
+    "name": "sensitivity_summary.csv",
+    "source_url": "https://drive.google.com/file/d/145_FS6ru46Z2iDN_VtucznYgT1u7Xvu6/view?usp=drivesdk",
+    "file_id": "145_FS6ru46Z2iDN_VtucznYgT1u7Xvu6",
+    "sha256": "b19f563dde0b51d7519271560dedeefc0d59331b1ce44a61ec35f453c6c1c862"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_analysis_200_20261104T135825_603042Z/final/selected_images.csv",
+    "size": 9766,
+    "name": "selected_images.csv",
+    "source_url": "https://drive.google.com/file/d/1OdWU_pUhQ4TAnUEVH4b7EHJhrrl-11O5/view?usp=drivesdk",
+    "file_id": "1OdWU_pUhQ4TAnUEVH4b7EHJhrrl-11O5",
+    "sha256": "1085a59115435a747d2e011624f02d955279170e401780c415ad7fdac4572303"
+  },
+  {
+    "relative_path": "results/figures/experiments/erf/sensitivity_analysis_200_20261104T135825_603042Z/final/sensitivity_gap_change.png",
+    "size": 86333,
+    "name": "sensitivity_gap_change.png",
+    "source_url": "https://drive.google.com/file/d/1W3KvC3kk_7LgWUDIkegLGSHBUjy1JY6D/view?usp=drivesdk",
+    "file_id": "1W3KvC3kk_7LgWUDIkegLGSHBUjy1JY6D",
+    "sha256": "15ac65b7e6d68c4ba04dce14c8a01d625fbdd76f3689524a2e8739f23bd1037b"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_200_absolute_center_20261104T135236_558931Z/final/metadata.json",
+    "size": 6343,
+    "name": "metadata.json",
+    "source_url": "https://drive.google.com/file/d/10wtYd5TzWNSvgqkNL3ISjwEqWwbURCbN/view?usp=drivesdk",
+    "file_id": "10wtYd5TzWNSvgqkNL3ISjwEqWwbURCbN",
+    "sha256": "e5c52fdafd3e5aea8ae1cb75c3ea27c2c52c29df1611f73d1623d64e130e4474"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_200_absolute_center_20261104T135236_558931Z/final/summary.csv",
+    "size": 2308,
+    "name": "summary.csv",
+    "source_url": "https://drive.google.com/file/d/1gtIPaqoOuentDeTD8asXV60KK4eHUd9X/view?usp=drivesdk",
+    "file_id": "1gtIPaqoOuentDeTD8asXV60KK4eHUd9X",
+    "sha256": "9aaeea99dbba4115ff9aa18a7ae8865f22c20a58bd23ecd901a234f5e5e445fc"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_200_absolute_center_20261104T135236_558931Z/final/metrics.csv",
+    "size": 559926,
+    "name": "metrics.csv",
+    "source_url": "https://drive.google.com/file/d/1A_ftkVRSfpi01humDKC3E4cRiCgUydXu/view?usp=drivesdk",
+    "file_id": "1A_ftkVRSfpi01humDKC3E4cRiCgUydXu",
+    "sha256": "aa139b5abcb8564694a3b601ad225fcece1018ebb8d071119b51eaa5fe16c396"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_200_absolute_center_20261104T135236_558931Z/final/selected_images.csv",
+    "size": 9766,
+    "name": "selected_images.csv",
+    "source_url": "https://drive.google.com/file/d/1UzeYlZnxZBBBid7uaM0roqe_d92qLPAx/view?usp=drivesdk",
+    "file_id": "1UzeYlZnxZBBBid7uaM0roqe_d92qLPAx",
+    "sha256": "1085a59115435a747d2e011624f02d955279170e401780c415ad7fdac4572303"
+  },
+  {
+    "relative_path": "results/figures/experiments/erf/sensitivity_200_absolute_center_20261104T135236_558931Z/final/comparison.png",
+    "size": 119551,
+    "name": "comparison.png",
+    "source_url": "https://drive.google.com/file/d/1wXWDkwgxF48MMMZ2w6QDFr4OAlNF7452/view?usp=drivesdk",
+    "file_id": "1wXWDkwgxF48MMMZ2w6QDFr4OAlNF7452",
+    "sha256": "8a08c311910320ea9970f8f62d4fd4bc61004d4c7b580a2d4d9d8b8de2a6ae09"
+  },
+  {
+    "relative_path": "results/figures/experiments/erf/sensitivity_200_absolute_center_20261104T135236_558931Z/final/image_02.png",
+    "size": 1395044,
+    "name": "image_02.png",
+    "source_url": "https://drive.google.com/file/d/1OjwwV_SXlZ3ydYuHKzdvT5eObSUQheLI/view?usp=drivesdk",
+    "file_id": "1OjwwV_SXlZ3ydYuHKzdvT5eObSUQheLI",
+    "sha256": "fea884e1ee21196f5ee272f3d37c690fe6248adc95f791985dfe244a10cff044"
+  },
+  {
+    "relative_path": "results/figures/experiments/erf/sensitivity_200_absolute_center_20261104T135236_558931Z/final/image_01.png",
+    "size": 1436141,
+    "name": "image_01.png",
+    "source_url": "https://drive.google.com/file/d/1DKwUAOYmn9RHCE6bXvVQhqf0si7j3Xrn/view?usp=drivesdk",
+    "file_id": "1DKwUAOYmn9RHCE6bXvVQhqf0si7j3Xrn",
+    "sha256": "dad705be5e36068754704651a2e996e90aa6228ec40c2f2f1a90eb936f8f116b"
+  },
+  {
+    "relative_path": "results/figures/experiments/erf/sensitivity_200_absolute_center_20261104T135236_558931Z/final/image_00.png",
+    "size": 1393725,
+    "name": "image_00.png",
+    "source_url": "https://drive.google.com/file/d/18CRljDZSJG2gp7YHWzUOeBUMJudkqY-F/view?usp=drivesdk",
+    "file_id": "18CRljDZSJG2gp7YHWzUOeBUMJudkqY-F",
+    "sha256": "2c7b6f4e86d881dcddc9c94c1b16d48ff8afff944f95d843b385fbdb905b3cd8"
+  },
+  {
+    "relative_path": "results/figures/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final/comparison.png",
+    "size": 118070,
+    "name": "comparison.png",
+    "source_url": "https://drive.google.com/file/d/10YJhtM-1b1C4hioZoS_wtXlUTDlMnVlU/view?usp=drivesdk",
+    "file_id": "10YJhtM-1b1C4hioZoS_wtXlUTDlMnVlU",
+    "sha256": "8bc2e5f8989e1bc2abba18b6d7c7390c4ee1fb7a32017cf909f114d868ec3f5a"
+  },
+  {
+    "relative_path": "results/figures/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final/image_02.png",
+    "size": 1322737,
+    "name": "image_02.png",
+    "source_url": "https://drive.google.com/file/d/1o987YNNrxe5cM04Mko1Mqv-RftiQ42Ti/view?usp=drivesdk",
+    "file_id": "1o987YNNrxe5cM04Mko1Mqv-RftiQ42Ti",
+    "sha256": "f52af0b8cab1beec026d642e5c95dbb57fdd7e9e691e66ccb71c55cec652b99d"
+  },
+  {
+    "relative_path": "results/figures/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final/image_01.png",
+    "size": 1356587,
+    "name": "image_01.png",
+    "source_url": "https://drive.google.com/file/d/19JeLDufK8FNBOt051_CM1cXP0tbgO7Ca/view?usp=drivesdk",
+    "file_id": "19JeLDufK8FNBOt051_CM1cXP0tbgO7Ca",
+    "sha256": "a7db979f26bc4f67482d79bec724d873165209c7571c6acd143ba64f7ff7bb52"
+  },
+  {
+    "relative_path": "results/figures/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final/image_00.png",
+    "size": 1333841,
+    "name": "image_00.png",
+    "source_url": "https://drive.google.com/file/d/1D1Ejg2rlKRlnCikVPfXti_cQpmqBPX74/view?usp=drivesdk",
+    "file_id": "1D1Ejg2rlKRlnCikVPfXti_cQpmqBPX74",
+    "sha256": "1967f3b700a84a1613b830e404d6c3bce36780e2bc44abffb768c7ec01a6bb3a"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final/metadata.json",
+    "size": 6379,
+    "name": "metadata.json",
+    "source_url": "https://drive.google.com/file/d/1y8JEZImqQKs5UZNGAZFF9j2ba_ZR3coQ/view?usp=drivesdk",
+    "file_id": "1y8JEZImqQKs5UZNGAZFF9j2ba_ZR3coQ",
+    "sha256": "71668cf77d6aa9a17bc964e9ba230e9af9003c627129399a32ea38b745c8cb1d"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final/summary.csv",
+    "size": 2321,
+    "name": "summary.csv",
+    "source_url": "https://drive.google.com/file/d/1B3wRtApIaFaGTVbWetVZ0OmGu73pQIiU/view?usp=drivesdk",
+    "file_id": "1B3wRtApIaFaGTVbWetVZ0OmGu73pQIiU",
+    "sha256": "6ef546dc9ef36b6b10b9ce6520c47006bc8e9bd821706608ceb70d28dd86f1f2"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final/metrics.csv",
+    "size": 566731,
+    "name": "metrics.csv",
+    "source_url": "https://drive.google.com/file/d/1kf-AqlMEkBIzJyawDhxU_nyLo6W5alh-/view?usp=drivesdk",
+    "file_id": "1kf-AqlMEkBIzJyawDhxU_nyLo6W5alh-",
+    "sha256": "490330fe914a7157ab7122f878fc1dfb6aeb4628143ec1f18320ae2940b62cfa"
+  },
+  {
+    "relative_path": "results/metrics/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final/selected_images.csv",
+    "size": 9766,
+    "name": "selected_images.csv",
+    "source_url": "https://drive.google.com/file/d/1TMD_vmDsItpSb8BlXzyVdaCcjg1sCZAZ/view?usp=drivesdk",
+    "file_id": "1TMD_vmDsItpSb8BlXzyVdaCcjg1sCZAZ",
+    "sha256": "1085a59115435a747d2e011624f02d955279170e401780c415ad7fdac4572303"
+  }
+]

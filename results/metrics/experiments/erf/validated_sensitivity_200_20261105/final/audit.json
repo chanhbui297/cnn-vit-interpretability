@@ -1,0 +1,90 @@
+{
+  "status": "passed",
+  "source_analysis": "results\\metrics\\experiments\\erf\\sensitivity_analysis_200_20261104T135825_603042Z\\final",
+  "source_metadata_sha256": "7217e64fa29810698e45dfd7b7443afbd8a678aa901627322e6b5db2683cad8d",
+  "num_images": 200,
+  "num_classes": 194,
+  "checks": [
+    "200 fixed IDs/labels/indices; no correctness filtering",
+    "source CSV and provenance SHA-256",
+    "1,600 valid image/model/stage rows per probe; checkpoint, crop, target and position",
+    "source summary mean/SD/N",
+    "same model-runtime versions as cached baseline",
+    "all 3,200 paired-difference rows",
+    "all 16 mean/CI/model-change summaries recomputed"
+  ],
+  "sources": {
+    "absolute_center": {
+      "path": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\metrics\\experiments\\erf\\sensitivity_200_absolute_center_20261104T135236_558931Z\\final",
+      "metrics_sha256": "aa139b5abcb8564694a3b601ad225fcece1018ebb8d071119b51eaa5fe16c396",
+      "rows": 1600,
+      "runtime_matches_baseline": {
+        "torch": true,
+        "torchvision": true,
+        "numpy": true,
+        "pandas": true
+      },
+      "method_matches_execution_bundle": {
+        "experiments/erf/erf_experiment.py": true,
+        "experiments/erf/erf_statistics.py": true,
+        "experiments/erf/erf_workflow.py": true,
+        "src/models.py": true,
+        "src/data.py": true,
+        "src/evaluation.py": true
+      }
+    },
+    "energy_quarter": {
+      "path": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\metrics\\experiments\\erf\\sensitivity_200_energy_quarter_20261104T135619_811103Z\\final",
+      "metrics_sha256": "490330fe914a7157ab7122f878fc1dfb6aeb4628143ec1f18320ae2940b62cfa",
+      "rows": 1600,
+      "runtime_matches_baseline": {
+        "torch": true,
+        "torchvision": true,
+        "numpy": true,
+        "pandas": true
+      },
+      "method_matches_execution_bundle": {
+        "experiments/erf/erf_experiment.py": true,
+        "experiments/erf/erf_statistics.py": true,
+        "experiments/erf/erf_workflow.py": true,
+        "src/models.py": true,
+        "src/data.py": true,
+        "src/evaluation.py": true
+      }
+    }
+  },
+  "timings": {
+    "absolute_center": {
+      "seconds": {
+        "vit_b_16": 151.712143897,
+        "resnet50": 51.04434089099999,
+        "total": 213.47457108
+      },
+      "peak_cuda_allocated_bytes": {
+        "vit_b_16": 449780224,
+        "resnet50": 220662784
+      }
+    },
+    "energy_quarter": {
+      "seconds": {
+        "vit_b_16": 58.47529058800001,
+        "resnet50": 53.67884085999998,
+        "total": 122.80336900000003
+      },
+      "peak_cuda_allocated_bytes": {
+        "vit_b_16": 450271744,
+        "resnet50": 220662784
+      }
+    }
+  },
+  "execution_bundle_sha256": "3ca2f88f83b8e8849e2e73c06417c18cd671ce4979e69ea2ad6df1cd7842957b",
+  "auditor_source_sha256": "71592f20f1db586d135ec7d23966ce6a7f46e1046e4419c093650622025b5564",
+  "baseline_profile_ci": "20,000 paired-image percentile resamples; seeds 42..49 for metric/stage groups sorted alphabetically",
+  "limitations": [
+    "Descriptive pointwise CIs; no new p-values or changes to the main 16-test Holm family.",
+    "Only two scalar choices and two grid positions; no universal position/target invariance claim.",
+    "Quarter-grid positions are not exactly matched in input coordinates; boundary effects can contribute.",
+    "Notebook bytes differ from the execution bundle; the six method/loader source files were checked independently.",
+    "Gradient calculations are checked through saved artifacts, not independently rerun on GPU."
+  ]
+}

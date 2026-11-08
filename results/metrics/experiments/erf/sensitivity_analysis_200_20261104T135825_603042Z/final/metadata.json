@@ -1,0 +1,42 @@
+{
+  "status": "complete",
+  "experiment": "erf_sensitivity",
+  "seed": 42,
+  "num_images": 200,
+  "bootstrap_resamples": 20000,
+  "sources": {
+    "absolute_center": {
+      "path": "/content/drive/MyDrive/cnn-vit-interpretability/results/metrics/experiments/erf/sensitivity_200_absolute_center_20261104T135236_558931Z/final",
+      "metrics_sha256": "aa139b5abcb8564694a3b601ad225fcece1018ebb8d071119b51eaa5fe16c396"
+    },
+    "energy_quarter": {
+      "path": "/content/drive/MyDrive/cnn-vit-interpretability/results/metrics/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final",
+      "metrics_sha256": "490330fe914a7157ab7122f878fc1dfb6aeb4628143ec1f18320ae2940b62cfa"
+    }
+  },
+  "baseline": {
+    "path": "/content/drive/MyDrive/cnn-vit-interpretability/results/metrics/experiments/erf/main_2000_shared_vit_crop_20261103T161602_476613Z/final",
+    "metrics_sha256": "754c8b940257bada173189a1d840653ca6ad622759653af4560c03da39ea805c"
+  },
+  "selection": "random.Random(42).sample(ID-sorted primary 2000 cohort, 200); no correctness filtering",
+  "inference": "descriptive paired-image bootstrap; no new p-values or changes to the original Holm family",
+  "position_limit": "Quarter-grid positions are not exactly aligned in original-input receptive centers.",
+  "artifact_sha256": {
+    "selected_images.csv": "1085a59115435a747d2e011624f02d955279170e401780c415ad7fdac4572303",
+    "sensitivity_summary.csv": "b19f563dde0b51d7519271560dedeefc0d59331b1ce44a61ec35f453c6c1c862",
+    "sensitivity_paired_differences.csv": "c23837fe20d7ab694b2a73155d0f3b05d9235e952dd264e5fe470f6e43752360"
+  },
+  "code": {
+    "git_revision": "a9ef4593633b72f45906ed5e5d1d358226cfb41e",
+    "git_dirty": true,
+    "file_sha256": {
+      "experiments/erf/erf_experiment.py": "f90b414df945d07d9088eabe2f2c03c97ad052af734e674730d416d4c0128efc",
+      "experiments/erf/erf_statistics.py": "a94dd5ca063f1680f6cd96f5dd102cda4490e6643d6adeb1ddeb7bbe6dde165a",
+      "experiments/erf/erf_workflow.py": "494ee221464bea4fd6ade8e8580637a173a9f065f3fe96f6a1a4544f194ba81a",
+      "notebooks/04_erf_2000.ipynb": "6f1a5e183ebe00a20c8a90473ca0b874baa15b9cea71714674ad3e6e302375d9",
+      "src/models.py": "adee07f977219f031b4f832bdcd01a57640c5c4cf5865582cb3f61b76f85c41b",
+      "src/data.py": "7d2124f355325f7004f39b86f55e3975698ea2ac71e9351baffe94c2d7b7ecda",
+      "src/evaluation.py": "851d145c479c4f653692ed6d47519c7fd8f943796591ca7f4b72a4bdb48f5d46"
+    }
+  }
+}

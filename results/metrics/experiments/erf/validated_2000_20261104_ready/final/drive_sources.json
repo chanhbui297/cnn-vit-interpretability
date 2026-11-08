@@ -1,0 +1,202 @@
+[
+  {
+    "name": "comparison.png",
+    "relative_path": "results/figures/experiments/erf/main_2000_shared_vit_crop_20261103T161602_476613Z/final/comparison.png",
+    "size": 122189,
+    "source_url": "https://drive.google.com/file/d/16um62q6W3y_tE4aPb47tr-rOrLnkYQlB/view?usp=drivesdk",
+    "file_id": "16um62q6W3y_tE4aPb47tr-rOrLnkYQlB",
+    "sha256": "a8c2b7f2ff367dccee6fe6c1756a3cc27984ac709270eccf5413070cfcb5540e"
+  },
+  {
+    "name": "image_02.png",
+    "relative_path": "results/figures/experiments/erf/main_2000_shared_vit_crop_20261103T161602_476613Z/final/image_02.png",
+    "size": 1519739,
+    "source_url": "https://drive.google.com/file/d/1C7Vin_zZKsgmdhZEvo99-qFPrRA1fO6Z/view?usp=drivesdk",
+    "file_id": "1C7Vin_zZKsgmdhZEvo99-qFPrRA1fO6Z",
+    "sha256": "a48c0ca39d4844a2b1169caf33fd1a9ee0ac473acc357f4e9d6f5ca4e3bac3bc"
+  },
+  {
+    "name": "image_01.png",
+    "relative_path": "results/figures/experiments/erf/main_2000_shared_vit_crop_20261103T161602_476613Z/final/image_01.png",
+    "size": 1405939,
+    "source_url": "https://drive.google.com/file/d/1ET8R4UoBc3cjYRBF-mPEFB09N8Uajkif/view?usp=drivesdk",
+    "file_id": "1ET8R4UoBc3cjYRBF-mPEFB09N8Uajkif",
+    "sha256": "ed01d8daca6bbb4fbf49a62d6cca17306a7b342d6e72b1872aeb0266e3aa0a05"
+  },
+  {
+    "name": "image_00.png",
+    "relative_path": "results/figures/experiments/erf/main_2000_shared_vit_crop_20261103T161602_476613Z/final/image_00.png",
+    "size": 1312133,
+    "source_url": "https://drive.google.com/file/d/1m2XbD_Vj_su5_zn15fDBp9gIewjA74pr/view?usp=drivesdk",
+    "file_id": "1m2XbD_Vj_su5_zn15fDBp9gIewjA74pr",
+    "sha256": "0bf9ea4b4258f3165566ff7c734fb6cd9a59b58be282bcaf1c0758c632b0bb8a"
+  },
+  {
+    "name": "comparison.png",
+    "relative_path": "results/figures/experiments/erf/main_2000_official_20261103T160959_331099Z/final/comparison.png",
+    "size": 121198,
+    "source_url": "https://drive.google.com/file/d/1TYy7oXk6aQwbBDf3k_d40tHykU4p5Gnf/view?usp=drivesdk",
+    "file_id": "1TYy7oXk6aQwbBDf3k_d40tHykU4p5Gnf",
+    "sha256": "091405383bdf54a3e2e4df0ef2abde20fe0b92264eb1d16d4759982ce3613346"
+  },
+  {
+    "name": "image_02.png",
+    "relative_path": "results/figures/experiments/erf/main_2000_official_20261103T160959_331099Z/final/image_02.png",
+    "size": 1512563,
+    "source_url": "https://drive.google.com/file/d/1KJPx3N_1LpSN3QwtUerWR4Bc9H97Hpjp/view?usp=drivesdk",
+    "file_id": "1KJPx3N_1LpSN3QwtUerWR4Bc9H97Hpjp",
+    "sha256": "bbf3cafc21e0b4bcb8993f80983bc36e34e98360882080a2903abafc2e8527f0"
+  },
+  {
+    "name": "image_01.png",
+    "relative_path": "results/figures/experiments/erf/main_2000_official_20261103T160959_331099Z/final/image_01.png",
+    "size": 1404846,
+    "source_url": "https://drive.google.com/file/d/1MGv02FybhrJDyuiJdHLQsxdr4xtujH9q/view?usp=drivesdk",
+    "file_id": "1MGv02FybhrJDyuiJdHLQsxdr4xtujH9q",
+    "sha256": "408b92069acea0fc90c56d44f2dadce96d1744250cc8fe9b1aaf36201f337550"
+  },
+  {
+    "name": "image_00.png",
+    "relative_path": "results/figures/experiments/erf/main_2000_official_20261103T160959_331099Z/final/image_00.png",
+    "size": 1317204,
+    "source_url": "https://drive.google.com/file/d/1iM5u88GLB9qqF6K_deMAIDBiDqHwVhBy/view?usp=drivesdk",
+    "file_id": "1iM5u88GLB9qqF6K_deMAIDBiDqHwVhBy",
+    "sha256": "1b7b4c090dfc2c87870ad7687d8716547082c145e9f9be08a673848266a4519c"
+  },
+  {
+    "name": "paired_mean_ci95.png",
+    "relative_path": "results/figures/experiments/erf/paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z/final/paired_mean_ci95.png",
+    "size": 72595,
+    "source_url": "https://drive.google.com/file/d/170YdKWfNrss3dhdH5u1D9IQEa3TjCIzA/view?usp=drivesdk",
+    "file_id": "170YdKWfNrss3dhdH5u1D9IQEa3TjCIzA",
+    "sha256": "7d66ab8bb1946a3b64e3114f28cd790487f8f316cf15de098bf5a90644a655eb"
+  },
+  {
+    "name": "metadata.json",
+    "relative_path": "results/metrics/experiments/erf/paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z/final/metadata.json",
+    "size": 8269,
+    "source_url": "https://drive.google.com/file/d/1evaq8tBe4KBhDy2qIvUhj-K-7-3pD3b1/view?usp=drivesdk",
+    "file_id": "1evaq8tBe4KBhDy2qIvUhj-K-7-3pD3b1",
+    "sha256": "6cf59a4e2c9bb8fdb3bf0286c94139908043cb831e88b56c11226a4a03a049eb"
+  },
+  {
+    "name": "crop_sensitivity.csv",
+    "relative_path": "results/metrics/experiments/erf/paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z/final/crop_sensitivity.csv",
+    "size": 1364,
+    "source_url": "https://drive.google.com/file/d/1jSUoW8PuozS8SWwu9eH2KcAtH-8EFES3/view?usp=drivesdk",
+    "file_id": "1jSUoW8PuozS8SWwu9eH2KcAtH-8EFES3",
+    "sha256": "a8fda5e28170fced819f547ff10fbbc5e07bc421311c9107ce141786d120c75c"
+  },
+  {
+    "name": "paired_tests.csv",
+    "relative_path": "results/metrics/experiments/erf/paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z/final/paired_tests.csv",
+    "size": 4162,
+    "source_url": "https://drive.google.com/file/d/1RBDAB2axy8fQAirRz4oFuVQ8AmrZFEB0/view?usp=drivesdk",
+    "file_id": "1RBDAB2axy8fQAirRz4oFuVQ8AmrZFEB0",
+    "sha256": "7742e837f94d0a19df3de9fb2f4d7b6744ab675ba8bce1264079199ace63527b"
+  },
+  {
+    "name": "paired_differences.csv",
+    "relative_path": "results/metrics/experiments/erf/paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z/final/paired_differences.csv",
+    "size": 5289723,
+    "source_url": "https://drive.google.com/file/d/12ZSzVC2LQsoac8rQ09SqDvz4TZt5BibT/view?usp=drivesdk",
+    "file_id": "12ZSzVC2LQsoac8rQ09SqDvz4TZt5BibT",
+    "sha256": "3040f867f1d41a43bf81dc3bcc37f0a4a6c8c86de9fe97fbfd1fd51a214eb928"
+  },
+  {
+    "name": "shared_vit_crop_metrics.csv",
+    "relative_path": "results/metrics/experiments/erf/paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z/final/shared_vit_crop_metrics.csv",
+    "size": 5173215,
+    "source_url": "https://drive.google.com/file/d/17fsFjPCE46scrE4hDucxF0UEdRa63msv/view?usp=drivesdk",
+    "file_id": "17fsFjPCE46scrE4hDucxF0UEdRa63msv",
+    "sha256": "3675ee254867672cc068cc39d92dc79ba2cd281dc9da141d91d276ccad8bee7e"
+  },
+  {
+    "name": "official_metrics.csv",
+    "relative_path": "results/metrics/experiments/erf/paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z/final/official_metrics.csv",
+    "size": 4949333,
+    "source_url": "https://drive.google.com/file/d/1zaxawJovCN9y8kL91NQHxg-RIoabbo82/view?usp=drivesdk",
+    "file_id": "1zaxawJovCN9y8kL91NQHxg-RIoabbo82",
+    "sha256": "8f6591aa104b5943917b03b1b6b8697345bd52cbfebab55c04e3026bea70db2a"
+  },
+  {
+    "name": "selected_images.csv",
+    "relative_path": "results/metrics/experiments/erf/paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z/final/selected_images.csv",
+    "size": 97363,
+    "source_url": "https://drive.google.com/file/d/19DmSBotqN2iP6OgHIU4OYqp2mLlRP8ya/view?usp=drivesdk",
+    "file_id": "19DmSBotqN2iP6OgHIU4OYqp2mLlRP8ya",
+    "sha256": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237"
+  },
+  {
+    "name": "metadata.json",
+    "relative_path": "results/metrics/experiments/erf/main_2000_official_20261103T160959_331099Z/final/metadata.json",
+    "size": 4828,
+    "source_url": "https://drive.google.com/file/d/1x-CKaQolYOQvbzH3HKfIAcfTknD51Wna/view?usp=drivesdk",
+    "file_id": "1x-CKaQolYOQvbzH3HKfIAcfTknD51Wna",
+    "sha256": "eab020145fbfcd637267d8e3d63020a6cd6bb9f58a3b7459d948248336558f29"
+  },
+  {
+    "name": "paired_area90_difference.csv",
+    "relative_path": "results/metrics/experiments/erf/main_2000_official_20261103T160959_331099Z/final/paired_area90_difference.csv",
+    "size": 198,
+    "source_url": "https://drive.google.com/file/d/1bbjjPl7Fn4spDAdCDZrTaA-J-ieV4gAk/view?usp=drivesdk",
+    "file_id": "1bbjjPl7Fn4spDAdCDZrTaA-J-ieV4gAk",
+    "sha256": "6a9c86852a0ac8d70d0a4013056d07e5708ae7f332ce2f42af220f49cc6f2861"
+  },
+  {
+    "name": "summary.csv",
+    "relative_path": "results/metrics/experiments/erf/main_2000_official_20261103T160959_331099Z/final/summary.csv",
+    "size": 2332,
+    "source_url": "https://drive.google.com/file/d/19mjl25RDGATUHy-vxKt64L-JGOQzy7UO/view?usp=drivesdk",
+    "file_id": "19mjl25RDGATUHy-vxKt64L-JGOQzy7UO",
+    "sha256": "ccf67efc4a4da84b6e76754b7f28d43a05d924e6771779e330a5a19b581b3204"
+  },
+  {
+    "name": "metrics.csv",
+    "relative_path": "results/metrics/experiments/erf/main_2000_official_20261103T160959_331099Z/final/metrics.csv",
+    "size": 5022503,
+    "source_url": "https://drive.google.com/file/d/19Ccb1RP5YNPNY1GgrfmFaeIHb5Qz9WJb/view?usp=drivesdk",
+    "file_id": "19Ccb1RP5YNPNY1GgrfmFaeIHb5Qz9WJb",
+    "sha256": "ccc3896808fa41e8913168c92ca6e923a6a867a3d85e9a8df41b3b3186a042fc"
+  },
+  {
+    "name": "selected_images.csv",
+    "relative_path": "results/metrics/experiments/erf/main_2000_official_20261103T160959_331099Z/final/selected_images.csv",
+    "size": 97363,
+    "source_url": "https://drive.google.com/file/d/19_zkPfNAFCCcxzIM2R6JATf94VdhRneM/view?usp=drivesdk",
+    "file_id": "19_zkPfNAFCCcxzIM2R6JATf94VdhRneM",
+    "sha256": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237"
+  },
+  {
+    "name": "metadata.json",
+    "relative_path": "results/metrics/experiments/erf/main_2000_shared_vit_crop_20261103T161602_476613Z/final/metadata.json",
+    "size": 4863,
+    "source_url": "https://drive.google.com/file/d/1lp3er0U3jrfxT3S_0lzISieqJczuwen4/view?usp=drivesdk",
+    "file_id": "1lp3er0U3jrfxT3S_0lzISieqJczuwen4",
+    "sha256": "6864784cb6e2bceffd98b8c0b9166d73c29e3be042d023008f99a91687d504a2"
+  },
+  {
+    "name": "summary.csv",
+    "relative_path": "results/metrics/experiments/erf/main_2000_shared_vit_crop_20261103T161602_476613Z/final/summary.csv",
+    "size": 2329,
+    "source_url": "https://drive.google.com/file/d/1V4sRK7TamjGOP3S9GHvb0YtVyyLqM1Kl/view?usp=drivesdk",
+    "file_id": "1V4sRK7TamjGOP3S9GHvb0YtVyyLqM1Kl",
+    "sha256": "49d671512c5a834b51c685dbc14458e4fea68b276e97cf9fe0b4828ad553b66f"
+  },
+  {
+    "name": "metrics.csv",
+    "relative_path": "results/metrics/experiments/erf/main_2000_shared_vit_crop_20261103T161602_476613Z/final/metrics.csv",
+    "size": 5245392,
+    "source_url": "https://drive.google.com/file/d/1AeCZTUrcwk3uUZjgAfbtby-d8pTlpJK0/view?usp=drivesdk",
+    "file_id": "1AeCZTUrcwk3uUZjgAfbtby-d8pTlpJK0",
+    "sha256": "754c8b940257bada173189a1d840653ca6ad622759653af4560c03da39ea805c"
+  },
+  {
+    "name": "selected_images.csv",
+    "relative_path": "results/metrics/experiments/erf/main_2000_shared_vit_crop_20261103T161602_476613Z/final/selected_images.csv",
+    "size": 97363,
+    "source_url": "https://drive.google.com/file/d/1FF1AqukIuEUQhECZbnvfn6yURHeMbh5U/view?usp=drivesdk",
+    "file_id": "1FF1AqukIuEUQhECZbnvfn6yURHeMbh5U",
+    "sha256": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237"
+  }
+]
