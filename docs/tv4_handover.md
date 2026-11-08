@@ -1,33 +1,53 @@
 # Bàn giao TV4 cho reviewer
 
-## Trạng thái
+## Trạng thái: hoàn thành
 
 | Hạng mục | Trạng thái | Bằng chứng |
 |---|---|---|
-| Baseline Shape-vs-Texture | Hoàn thành | 1.200 conflict images, 2.560 clean prediction rows |
-| Controlled Cue Perturbation | Hoàn thành | 12.000 rows, paired CIs, transitions, figures, executed notebook |
-| Texture Robustness trên clean ImageNet | Chưa chạy full | 14 raw validation shards gated/không có; không tạo metric giả |
+| Shape-vs-Texture baseline | Hoàn thành | 1.200 valid cue-conflict images; `shape_texture_predictions.csv` / `shape_texture_summary.csv` |
+| Controlled Cue Perturbation | Hoàn thành | 12.000 rows, paired transitions/figures |
+| Texture Robustness | Hoàn thành | **16.800** rows = 2 models × 1.200 images × 7 conditions |
+| Executed research notebook | Hoàn thành | `notebooks/texture_robustness.ipynb`: 10 executed code cells, 12 inline PNG outputs, no error outputs |
+| Report tổng hợp | Hoàn thành | `docs/tv4_report.md` |
 
-## Controlled Cue Perturbation
+## Review nhanh
 
-Research question: **Does a higher shape bias imply stronger reliance on global shape information?** Full study dùng blur S1/S2 và deterministic patch shuffle 48/32 px trên cùng 1.200 cue-conflict IDs. Clean parity tái lập đúng baseline: ResNet 181/671/348 và ViT 326/493/381 cho Shape/Texture/Neither.
+- Dataset: Geirhos Texture–Shape Cue Conflict test split; 1.280 source images, loại 80 same-cue, còn 1.200 valid IDs. Set ID bằng chính Shape/Controlled notebook (hash trong `texture_metadata.json`).
+- Models/checkpoints/preprocessing/mapping: nguyên vẹn `ResNet50_Weights.IMAGENET1K_V2`, `ViT_B_16_Weights.IMAGENET1K_V1`, torchvision transforms và official 1.000→16 Geirhos mapping.
+- Conditions: clean; Gaussian `(7,1,5)`, `(13,3,0)`, `(19,4,5)`; Bilateral `(5,25,25)`, `(9,50,50)`, `(13,100,100)`.
+- Gaussian S1/S2 là exact parameter match với Controlled Cue Perturbation. 7.200 validated rows (2 models × 1.200 × clean/S1/S2) được reused; 9.600 new rows (Gaussian S3 + Bilateral S1–S3) chạy CUDA. Final output kiểm tra 14 model-condition cohorts × 1.200 unique IDs.
 
-- Blur tăng Shape Bias nhưng giảm coverage: ResNet 21,24% → 48,86%/72,05%; ViT 39,80% → 66,76%/83,88%.
-- Shuffle giảm Shape Bias: ResNet 8,81%/7,86%; ViT 13,90%/9,90% (48/32 px).
-- Kết luận: đây là response sensitivity, **không** là chứng cứ trực tiếp rằng Shape Bias cao hơn đồng nghĩa reliance global shape mạnh hơn.
+## Kết quả headline
 
-Pilot 160 ảnh loại shuffle 16 px vì coverage quá thấp. Artifacts:
+- Clean Shape Bias: ResNet **21,24%**, ViT **39,80%**.
+- Gaussian S3 consistency: ResNet **19,00%**, ViT **24,00%**; coverage lần lượt **33,42%**, **42,33%**.
+- Bilateral S3 consistency: ResNet **50,00%**, ViT **56,67%**; coverage **54,42%**, **60,83%**.
+- Do Shape Bias tăng trong Gaussian đồng thời Neither tăng/coverage giảm, không diễn giải đó là accuracy hoặc shape recognition tốt hơn.
 
-- Notebook: `notebooks/shape_texture_bias.ipynb` (đã execute hoàn chỉnh).
-- Utility: `experiments/shape_texture_bias/controlled_perturbation.py`.
-- CSV: `results/tv4/controlled_perturbation_{predictions,summary,transitions}.csv`.
-- Metadata: `results/tv4/controlled_perturbation_metadata.json`.
-- Figures: `results/tv4/figures/controlled_shape_bias_and_coverage.png`, `controlled_transition_heatmaps.png`.
+## Artifacts
 
-## Cách review / chạy lại
+- `notebooks/shape_texture_bias.ipynb` — retained verified Shape results.
+- `notebooks/texture_robustness.ipynb` — executed, cache-aware notebook with image grid, direct single-image inference, inline result figures and six paired qualitative cases.
+- `experiments/texture/cue_conflict_robustness.py` — transformations, cohort/cache validation, metrics and transitions.
+- `experiments/texture/run_cue_conflict_robustness.py` — resumable full runner and PNG generation.
+- `results/tv4/texture_predictions.csv`, `texture_summary.csv`, `texture_transitions.csv`, `texture_metadata.json`.
+- `results/tv4/figures/texture_*.png`.
+- `docs/tv4_report.md` — integrated academic Vietnamese report.
 
-Mở notebook với environment có `requirements.txt`, `datasets`, `opencv-python-headless`, `nbformat`, `nbclient`; Run All dùng cache đã xác minh. Đổi `FORCE_RECOMPUTE_CONTROLLED=True` để chạy lại 1.200 IDs × 5 conditions × 2 models trực tiếp từ notebook. Mọi transform được xác định bởi image ID + seed 42 và shared giữa model.
+## Cách tái lập / review
 
-## Limitation cần giữ
+```bash
+PYTHONPATH=.deps .venv/bin/python experiments/texture/run_cue_conflict_robustness.py
+```
 
-Blur không xóa hoàn toàn texture và cũng có thể làm yếu shape edges. Patch Shuffle không xóa hoàn toàn shape, giữ local tiles nhưng phá context và tạo tile boundaries. ImageNet clean-data check chưa thể chạy vì raw pixels gated; không thay bằng baseline CSV.
+Mặc định chỉ cache-hit khi ID hash, conditions và mapping-source hash hợp lệ. Chạy lại inference từ đầu:
+
+```bash
+PYTHONPATH=.deps .venv/bin/python experiments/texture/run_cue_conflict_robustness.py --force-recompute
+```
+
+Mở notebook là xem được outputs đã lưu; để recompute qua notebook, đổi `FORCE_RECOMPUTE = True` ở Full Experiment cell. Không commit dataset/cache model/raw images.
+
+## Hạn chế cần giữ trong paper
+
+Cue-conflict là dữ liệu stylized; blur không cô lập texture; Shape Bias không phải classification accuracy; training recipe checkpoints có thể khác; khác biệt không thể quy riêng cho CNN/ViT architecture. Gaussian S1/S2 không được đếm như evidence độc lập với controlled experiment.

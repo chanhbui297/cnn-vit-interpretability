@@ -1,0 +1,67 @@
+{
+  "run_id": "tv4_cue_conflict_texture_robustness_v1",
+  "dataset_id": "rgeirhos/texture-shape-cue-conflict",
+  "dataset_split": "test",
+  "num_source_images": 1280,
+  "num_valid_cue_conflict_images": 1200,
+  "excluded_same_cue": 80,
+  "valid_image_ids_sha256": "30fb442a86ebf53e6ad3b22f7dbe57867f7a1c009ee58e475fef2c51a185ec21",
+  "mapping_source": "experiments/shape_texture_bias/official_mapping.py",
+  "mapping_source_sha256": "7c74205ea1e4fed738eb54bf3428c1e131748fcd0b8c1cf4a3332cb94d13a1f6",
+  "conditions": {
+    "clean": {
+      "family": "clean",
+      "severity": 0
+    },
+    "gaussian_s1": {
+      "family": "gaussian_blur",
+      "severity": 1,
+      "kernel_size": 7,
+      "sigma": 1.5
+    },
+    "gaussian_s2": {
+      "family": "gaussian_blur",
+      "severity": 2,
+      "kernel_size": 13,
+      "sigma": 3.0
+    },
+    "gaussian_s3": {
+      "family": "gaussian_blur",
+      "severity": 3,
+      "kernel_size": 19,
+      "sigma": 4.5
+    },
+    "bilateral_s1": {
+      "family": "bilateral_filter",
+      "severity": 1,
+      "diameter": 5,
+      "sigma_color": 25,
+      "sigma_space": 25
+    },
+    "bilateral_s2": {
+      "family": "bilateral_filter",
+      "severity": 2,
+      "diameter": 9,
+      "sigma_color": 50,
+      "sigma_space": 50
+    },
+    "bilateral_s3": {
+      "family": "bilateral_filter",
+      "severity": 3,
+      "diameter": 13,
+      "sigma_color": 100,
+      "sigma_space": 100
+    }
+  },
+  "models": {},
+  "batch_size": 64,
+  "seed": 42,
+  "device": "cuda",
+  "reused_shape_controlled_conditions": [
+    "clean",
+    "gaussian_s1",
+    "gaussian_s2"
+  ],
+  "controlled_source": "results/tv4/controlled_perturbation_predictions.csv",
+  "created_utc": "2026-11-08T17:28:06.048690+00:00"
+}
