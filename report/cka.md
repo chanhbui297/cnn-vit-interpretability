@@ -103,7 +103,7 @@ $$
 và điểm tương đồng:
 
 $$
-\operatorname{CKA}(X,Y)=
+\mathrm{CKA}(X,Y)=
 \frac{\lVert S_{XY}\rVert_F^2}
 {\lVert S_{XX}\rVert_F\,\lVert S_{YY}\rVert_F}.
 $$
@@ -131,7 +131,7 @@ Lần chạy chính thực hiện trên CPU, batch size 16, bằng PyTorch 2.15.
 
 ### 8. Chiến lược phân tích kết quả
 
-Đặt $M_{s,b}=\operatorname{CKA}(X^{(s)},Y^{(b)})$ để xây dựng ma trận 4×12. Bản đồ nhiệt dùng thang cố định 0–1. Với mỗi stage, vị trí cực đại được xác định bởi $b_s^*=\arg\max_bM_{s,b}$; đồng thời xem các cặp lân cận về điểm để tránh diễn giải quá mức một cực đại đơn lẻ.
+Đặt $M_{s,b}=\mathrm{CKA}(X^{(s)},Y^{(b)})$ để xây dựng ma trận 4×12. Bản đồ nhiệt dùng thang cố định 0–1. Với mỗi stage, vị trí cực đại được xác định bởi $b_s^*=\arg\max_bM_{s,b}$; đồng thời xem các cặp lân cận về điểm để tránh diễn giải quá mức một cực đại đơn lẻ.
 
 Phân tích hiện tại là **mô tả**: báo cáo khoảng giá trị, các cực đại và xu hướng theo độ sâu. Mỗi ô là một thống kê trên cả tập ảnh, nên không có 10.000 điểm CKA độc lập cho từng cặp tầng. Do đó, nghiên cứu không áp dụng trực tiếp kiểm định ghép cặp trên từng ảnh như đối với chỉ số ERF. Bootstrap CKA có thể được triển khai bằng cách lấy lại mẫu và tính lại toàn bộ phép đo, nhưng chưa được thực hiện; báo cáo không đưa ra p-value hoặc khoảng tin cậy.
 
