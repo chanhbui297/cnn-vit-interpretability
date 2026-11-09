@@ -66,7 +66,7 @@ Entropy của ViT thấp hơn ResNet trên cả hai grid trong bản tổng hợ
 | 7×7 | 1,552 | 3,345 | 0,877 | 0,621 |
 | 14×14 | 1,652 | 9,518 | 0,879 | 0,460 |
 
-![E1: so sánh số connected components và Largest Component Ratio trên hai grid](figures/e1_cam_components.png)
+![E1: so sánh số connected components và Largest Component Ratio trên hai grid](../results/figures/experiments/attention_gradcam/report/final/e1_cam_components.png)
 
 *Hình 1. Mean morphology metrics của top-20% CAM, vẽ từ số liệu aggregate được cung cấp. Hai model dùng cùng quy tắc chọn ô và 8-neighbor connectivity.*
 
@@ -100,7 +100,7 @@ Trích xuất direct attention weights tại block 3/6/9/12 trên native grid **
 | 9 | 0,8964 |
 | 12 | 0,7222 |
 
-![E2 RQ1: mean normalized CLS attention entropy theo transformer block](figures/e2_cls_entropy.png)
+![E2 RQ1: mean normalized CLS attention entropy theo transformer block](../results/figures/experiments/attention_gradcam/report/final/e2_cls_entropy.png)
 
 *Hình 2. Entropy giảm qua các block được khảo sát. Đây là mean của cohort 1.000 ảnh theo bản tổng hợp; chưa có error bars hoặc confidence intervals.*
 
@@ -137,7 +137,7 @@ DAM được tính cho toàn bộ 196 queries/ảnh, trung bình trong mỗi ả
 | 9 | 47,71% | 53,93% | −6,22 pp | 52,29% |
 | 12 | 54,11% | 53,93% | +0,18 pp | 45,89% |
 
-![E2 RQ2: DAM qua các block so với uniform baseline](figures/e2_distant_attention_mass.png)
+![E2 RQ2: DAM qua các block so với uniform baseline](../results/figures/experiments/attention_gradcam/report/final/e2_distant_attention_mass.png)
 
 *Hình 3. DAM quan sát từ bản tổng hợp và uniform baseline tính từ hình học grid. `pp` là percentage points. Near mass và DAM có tổng 100% sau khi loại CLS và chính query.*
 
@@ -147,7 +147,7 @@ DAM được tính cho toàn bộ 196 queries/ảnh, trung bình trong mỗi ả
 
 Để đối chiếu các chỉ số với spatial attention thực tế, hình dưới sử dụng một ảnh **lampshade** (`ILSVRC2012_val_00000427_n03637318.JPEG`). Cùng hai query cố định được giữ qua bốn block, không chọn lại theo heatmap.
 
-![E2: ảnh lamp với CLS attention và hai query patches qua block 3/6/9/12](figures/e2_example_01.png)
+![E2: ảnh lamp với CLS attention và hai query patches qua block 3/6/9/12](../results/figures/experiments/attention_gradcam/report/final/e2_example_01.png)
 
 *Hình 4. Hàng đầu là CLS-to-patch attention; hai hàng dưới là query-to-other-patches tại `(6,6)` và `(3,3)`, tọa độ zero-based. Viền vàng đánh dấu query; vòng cyan có bán kính 7 patch steps, với distant destinations nằm trên/ngoài vòng. Chính query được mask, CLS bị loại khỏi patch-query distribution. Màu biểu diễn attention probability, dùng chung color scale giữa bốn block trong mỗi hàng. `H` và DAM trên hình là giá trị của riêng ảnh/query này, không phải mean toàn cohort.*
 
