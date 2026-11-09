@@ -3,11 +3,17 @@
 Compare ResNet-50 and ViT-B/16 under square gray occlusion. The experiment has
 already been run on the balanced 10,000-image analysis set.
 
+## Report handoff
+
+TV6 should use [REPORT_HANDOFF.md](REPORT_HANDOFF.md) for verified methodology,
+results, references, limitations, a suggested paper figure, and compact text for
+the final report. The original full-run outputs remain unchanged.
+
 ## Files and responsibilities
 
 - `occlusion.py`: reusable preprocessing split, masking, batched experiment loop,
   and metric aggregation extracted from `notebooks/06_occlusion.ipynb`.
-- `../../notebooks/06_occlusion.ipynb`: the original self-contained notebook with
+- [06_occlusion.ipynb](../../notebooks/06_occlusion.ipynb): the original self-contained notebook with
   methodology, executed results, visual checks, plots, and discussion. It is
   preserved and does not yet import this module.
 - `../../src/`: shared model loading, data loading, inference and CSV helpers.
@@ -78,6 +84,7 @@ You can also recompute metrics from existing CSVs without inference:
 ```python
 import csv
 from pathlib import Path
+from experiments.occlusion.occlusion import summarize_predictions
 
 run_dir = Path("results/metrics/experiments/occlusion/full10000_20261105T051900440637Z/final")
 predictions = {}
