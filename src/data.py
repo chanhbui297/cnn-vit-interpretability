@@ -6,6 +6,7 @@ from io import BytesIO
 from pathlib import Path
 
 from PIL import Image
+import pyarrow.dataset as ds
 import pyarrow.parquet as pq
 
 # Tính đường dẫn từ vị trí file code, không gắn với thư mục cá nhân của thành viên.
@@ -46,7 +47,9 @@ def load_analysis_manifest(path=DEFAULT_MANIFEST, *, limit=None):
     return records
 
 
-def iter_analysis_images(records=None, *, data_dir=DEFAULT_DATA_DIR):
+def iter_analysis_images(
+    records=None, *, data_dir=DEFAULT_DATA_DIR, decode_batch_size=64
+):
     """Yield (PIL RGB image, label, image_id) in Parquet order, joining by ID.
 
     Only selected images are decoded. Read lightweight IDs/labels first to skip
@@ -55,6 +58,9 @@ def iter_analysis_images(records=None, *, data_dir=DEFAULT_DATA_DIR):
     """
     if records is None:
         records = load_analysis_manifest()
+    if (not isinstance(decode_batch_size, int) or isinstance(decode_batch_size, bool)
+            or decode_batch_size < 1):
+        raise ValueError("decode_batch_size must be a positive integer")
     records = list(records)
     # Tra ảnh bằng image_id; không dùng vị trí hàng hoặc dataset_index để ghép ảnh.
     selected = {r["image_id"]: int(r["label"]) for r in records}
@@ -80,8 +86,16 @@ def iter_analysis_images(records=None, *, data_dir=DEFAULT_DATA_DIR):
         for image_id, label in zip(shard_ids, shard_labels):
             if image_id in selected and label != selected[image_id]:
                 raise ValueError(f"Manifest/dataset label mismatch: {image_id}")
-        # Đọc byte ảnh theo batch để giới hạn RAM, nhưng chỉ giải mã ID được chọn.
-        for batch in pq.ParquetFile(path).iter_batches(batch_size=64, columns=["image", "label"]):
+        # Lọc theo nested image.path ngay trong Arrow để không materialize byte
+        # của hàng không thuộc cohort. Scanner vẫn chia batch nhỏ để giới hạn RAM.
+        dataset = ds.dataset(path, format="parquet")
+        scanner = dataset.scanner(
+            columns=["image", "label"],
+            filter=ds.field(("image", "path")).isin(sorted(wanted)),
+            batch_size=decode_batch_size,
+            use_threads=False,
+        )
+        for batch in scanner.to_batches():
             for row in batch.to_pylist():
                 image_id = row["image"]["path"]
                 if image_id not in selected:
