@@ -1,0 +1,125 @@
+{
+  "experiment": "occlusion",
+  "run_id": "full10000_20261105T051900440637Z",
+  "seed": 42,
+  "n_images": 10000,
+  "batch_size": 16,
+  "manifest": "data\\manifests\\analysis_10000_seed42.csv",
+  "manifest_sha256": "eea185ba9e733636eb245c8d4eab3137f91af4be3d9a5f3766a48bf11d7b057f",
+  "selection": "first N_IMAGES rows of the committed analysis manifest",
+  "cohort_file": "selected_images.csv",
+  "cohort_sha256": "eea185ba9e733636eb245c8d4eab3137f91af4be3d9a5f3766a48bf11d7b057f",
+  "models": {
+    "resnet50": {
+      "model_name": "resnet50",
+      "weights": "ResNet50_Weights.IMAGENET1K_V2",
+      "weights_url": "https://download.pytorch.org/models/resnet50-11ad3fa6.pth",
+      "checkpoint": "resnet50-11ad3fa6.pth",
+      "device": "cuda",
+      "torch_version": "2.5.1+cu121",
+      "torchvision_version": "0.20.1+cu121",
+      "preprocessing": {
+        "color_mode": "RGB",
+        "resize_size": [
+          232
+        ],
+        "crop_size": [
+          224
+        ],
+        "interpolation": "bilinear",
+        "antialias": true,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      }
+    },
+    "vit_b_16": {
+      "model_name": "vit_b_16",
+      "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+      "weights_url": "https://download.pytorch.org/models/vit_b_16-c867db91.pth",
+      "checkpoint": "vit_b_16-c867db91.pth",
+      "device": "cuda",
+      "torch_version": "2.5.1+cu121",
+      "torchvision_version": "0.20.1+cu121",
+      "preprocessing": {
+        "color_mode": "RGB",
+        "resize_size": [
+          256
+        ],
+        "crop_size": [
+          224
+        ],
+        "interpolation": "bilinear",
+        "antialias": true,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      }
+    }
+  },
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "parameters": {
+    "severities_pct": [
+      0,
+      10,
+      20,
+      30,
+      40,
+      50
+    ],
+    "positions": [
+      "center",
+      "random"
+    ],
+    "fill_rgb": [
+      128,
+      128,
+      128
+    ],
+    "mask_shape": "square",
+    "input_size": [
+      224,
+      224
+    ],
+    "stage": "after official resize/center crop, before normalization",
+    "side_rule": "round(224 * sqrt(severity / 100))",
+    "random_rule": "random.Random(int.from_bytes(sha256(seed|image_id|severity), big))",
+    "coordinates_file": "mask_coordinates.csv",
+    "zero_condition": "clean (reused for both positions)"
+  },
+  "metric_units": {
+    "accuracy": "percent",
+    "absolute_drop": "percentage points",
+    "relative_drop": "percent",
+    "prediction_consistency": "percent",
+    "drop_columns": "absolute_drop_pp/relative_drop_pct refer to Top-1; top5 columns are separate"
+  },
+  "package_versions": {
+    "torch": "2.5.1+cu121",
+    "torchvision": "0.20.1+cu121",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "pillow": "13.0.0",
+    "pyarrow": "26.0.0",
+    "matplotlib": "3.11.2"
+  },
+  "python_version": "3.12.7 (tags/v3.12.7:0b05ead, Oct  1 2024, 03:06:41) [MSC v.1941 64 bit (AMD64)]",
+  "git_revision": "fd4a8ae80329ccef760bebe5b68c639baf0a8834",
+  "git_dirty": true,
+  "exclusions": []
+}
