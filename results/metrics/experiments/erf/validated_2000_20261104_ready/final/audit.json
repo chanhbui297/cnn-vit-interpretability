@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "checks": [
+    "fixed balanced cohort, IDs and labels",
+    "selection checksums",
+    "16,000 rows per condition and valid gradients/metrics",
+    "fixed checkpoints and transforms",
+    "unchanged ViT negative control",
+    "source metrics SHA-256 from historical paired metadata",
+    "original summary mean/SD/N",
+    "paired metric copies and per-image differences",
+    "all 16 Wilcoxon/Holm/bootstrap rows",
+    "8 crop-sensitivity rows"
+  ],
+  "sources": {
+    "official": {
+      "path": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\metrics\\experiments\\erf\\main_2000_official_20261103T160959_331099Z\\final",
+      "files": {
+        "metadata.json": "eab020145fbfcd637267d8e3d63020a6cd6bb9f58a3b7459d948248336558f29",
+        "metrics.csv": "ccc3896808fa41e8913168c92ca6e923a6a867a3d85e9a8df41b3b3186a042fc",
+        "paired_area90_difference.csv": "6a9c86852a0ac8d70d0a4013056d07e5708ae7f332ce2f42af220f49cc6f2861",
+        "selected_images.csv": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237",
+        "summary.csv": "ccf67efc4a4da84b6e76754b7f28d43a05d924e6771779e330a5a19b581b3204"
+      }
+    },
+    "shared_vit_crop": {
+      "path": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\metrics\\experiments\\erf\\main_2000_shared_vit_crop_20261103T161602_476613Z\\final",
+      "files": {
+        "metadata.json": "6864784cb6e2bceffd98b8c0b9166d73c29e3be042d023008f99a91687d504a2",
+        "metrics.csv": "754c8b940257bada173189a1d840653ca6ad622759653af4560c03da39ea805c",
+        "selected_images.csv": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237",
+        "summary.csv": "49d671512c5a834b51c685dbc14458e4fea68b276e97cf9fe0b4828ad553b66f"
+      }
+    },
+    "paired": {
+      "path": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\metrics\\experiments\\erf\\paired_2000_official_vs_shared_vit_crop_20261103T162207_281699Z\\final",
+      "files": {
+        "crop_sensitivity.csv": "a8fda5e28170fced819f547ff10fbbc5e07bc421311c9107ce141786d120c75c",
+        "metadata.json": "6cf59a4e2c9bb8fdb3bf0286c94139908043cb831e88b56c11226a4a03a049eb",
+        "official_metrics.csv": "8f6591aa104b5943917b03b1b6b8697345bd52cbfebab55c04e3026bea70db2a",
+        "paired_differences.csv": "3040f867f1d41a43bf81dc3bcc37f0a4a6c8c86de9fe97fbfd1fd51a214eb928",
+        "paired_tests.csv": "7742e837f94d0a19df3de9fb2f4d7b6744ab675ba8bce1264079199ace63527b",
+        "selected_images.csv": "eb8082ed6e44cfb24b06ac1e829a6ddc82cf50f7c0bb558726d3dcb04f503237",
+        "shared_vit_crop_metrics.csv": "3675ee254867672cc068cc39d92dc79ba2cd281dc9da141d91d276ccad8bee7e"
+      }
+    }
+  },
+  "limitations": [
+    "Historical run metadata records a dirty working tree; the executed notebook itself was not hashed.",
+    "Raw maps were saved only for previews; gradients for every image are not independently recomputed.",
+    "Image-pair bootstrap does not preserve per-class quotas; CIs are pointwise and not multiplicity-adjusted."
+  ]
+}

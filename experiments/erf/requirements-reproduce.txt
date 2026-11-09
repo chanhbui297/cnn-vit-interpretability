@@ -1,0 +1,5 @@
+# Install after the project's requirements when auditing the historical runs.
+# pandas CSV float parsing can change tied Wilcoxon ranks at 12 decimals.
+numpy==2.4.6
+pandas==2.2.3
+scipy==1.16.3

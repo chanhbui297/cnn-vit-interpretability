@@ -1,0 +1,46 @@
+{
+  "status": "complete",
+  "experiment": "erf_sensitivity",
+  "seed": 42,
+  "num_images": 200,
+  "bootstrap_resamples": 20000,
+  "sources": {
+    "absolute_center": {
+      "path": "results\\metrics\\experiments\\erf\\sensitivity_200_absolute_center_20261104T135236_558931Z\\final",
+      "metrics_sha256": "aa139b5abcb8564694a3b601ad225fcece1018ebb8d071119b51eaa5fe16c396"
+    },
+    "energy_quarter": {
+      "path": "results\\metrics\\experiments\\erf\\sensitivity_200_energy_quarter_20261104T135619_811103Z\\final",
+      "metrics_sha256": "490330fe914a7157ab7122f878fc1dfb6aeb4628143ec1f18320ae2940b62cfa"
+    }
+  },
+  "baseline": {
+    "path": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\metrics\\experiments\\erf\\main_2000_shared_vit_crop_20261103T161602_476613Z\\final",
+    "metrics_sha256": "754c8b940257bada173189a1d840653ca6ad622759653af4560c03da39ea805c"
+  },
+  "selection": "random.Random(42).sample(ID-sorted primary 2000 cohort, 200); no correctness filtering",
+  "inference": "descriptive paired-image bootstrap; no new p-values or changes to the original Holm family",
+  "position_limit": "Quarter-grid positions are not exactly aligned in original-input receptive centers.",
+  "artifact_sha256": {
+    "selected_images.csv": "08b3dec133e4246b0726eccc6d7d89c89bb5d1fad2df40885a5d1e13221ff951",
+    "sensitivity_paired_differences.csv": "aaa68464d89a3c8ae83adfca5576444904452cabb2b0ca0e1d3a61237b5c3d6c",
+    "sensitivity_profiles.csv": "71c130ec5d98a18e2531933cd382e32cdb12a320beb612b99eeab51467c2fabf",
+    "sensitivity_summary.csv": "b4b42d01082c14a5998f9234b04c981a965413a478cf86a9469a35173a0d4b12"
+  },
+  "code": {
+    "git_revision": "25e2cf2eebfc430cf7124b1574277d649e15eaf4",
+    "git_dirty": true,
+    "file_sha256": {
+      "experiments/erf/erf_experiment.py": "f90b414df945d07d9088eabe2f2c03c97ad052af734e674730d416d4c0128efc",
+      "experiments/erf/erf_statistics.py": "a94dd5ca063f1680f6cd96f5dd102cda4490e6643d6adeb1ddeb7bbe6dde165a",
+      "experiments/erf/erf_workflow.py": "494ee221464bea4fd6ade8e8580637a173a9f065f3fe96f6a1a4544f194ba81a",
+      "notebooks/04_erf_2000.ipynb": "3dffa1029246cb59a1f389aeb4ccba44be31de8aecb7332d019b3bde90c898d1",
+      "src/models.py": "adee07f977219f031b4f832bdcd01a57640c5c4cf5865582cb3f61b76f85c41b",
+      "src/data.py": "7d2124f355325f7004f39b86f55e3975698ea2ac71e9351baffe94c2d7b7ecda",
+      "src/evaluation.py": "851d145c479c4f653692ed6d47519c7fd8f943796591ca7f4b72a4bdb48f5d46"
+    }
+  },
+  "validation": "passed_against_original_colab_artifacts",
+  "figures_dir": "C:\\Users\\Admin\\Desktop\\DSEB\\Ki_7\\Computer Vision\\cnn-vit-interpretability\\results\\figures\\experiments\\erf\\validated_sensitivity_200_20261105\\final",
+  "audit_sha256": "3f406b65a145b6ca17e5d721fd9364f1d5bdbafd7670c057742c7802414dea63"
+}

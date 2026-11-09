@@ -1,0 +1,194 @@
+{
+  "experiment": "erf",
+  "run_id": "sensitivity_200_energy_quarter_20261104T135619_811103Z",
+  "status": "complete",
+  "num_images": 200,
+  "seed": 42,
+  "device": "cuda",
+  "torch": "2.11.0+cu130",
+  "torchvision": "0.26.0+cu130",
+  "numpy": "2.4.6",
+  "pandas": "2.2.3",
+  "preprocessing": "shared_vit_crop",
+  "condition": "shared_vit_crop",
+  "severity": "",
+  "batch_size": 1,
+  "allow_download": true,
+  "checkpoint_every": 50,
+  "target_mode": "energy",
+  "position": "quarter",
+  "target": "mean(square(quarter_feature_vector)); post-stage/post-block, pre-final-LN",
+  "center_rule": "row=round(0.25*(grid_height-1)), col=round(0.25*(grid_width-1)); zero-based",
+  "gradient_coordinates": "RGB [0,1] AFTER resize/crop, BEFORE normalization",
+  "layers": {
+    "resnet50": [
+      "layer1",
+      "layer2",
+      "layer3",
+      "layer4"
+    ],
+    "vit_b_16": [
+      "block3",
+      "block6",
+      "block9",
+      "block12"
+    ]
+  },
+  "models": {
+    "vit_b_16": {
+      "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+      "transform": "ImageClassification(\n    crop_size=[224]\n    resize_size=[256]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+      "applied_preprocessing": {
+        "resize_size": [
+          256
+        ],
+        "crop_size": [
+          224
+        ],
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "antialias": true
+      },
+      "baseline_loader": {
+        "model_name": "vit_b_16",
+        "weights": "ViT_B_16_Weights.IMAGENET1K_V1",
+        "weights_url": "https://download.pytorch.org/models/vit_b_16-c867db91.pth",
+        "checkpoint": "vit_b_16-c867db91.pth",
+        "device": "cuda",
+        "torch_version": "2.11.0+cu130",
+        "torchvision_version": "0.26.0+cu130",
+        "preprocessing": {
+          "color_mode": "RGB",
+          "resize_size": [
+            256
+          ],
+          "crop_size": [
+            224
+          ],
+          "interpolation": "bilinear",
+          "antialias": true,
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ]
+        }
+      }
+    },
+    "resnet50": {
+      "weights": "ResNet50_Weights.IMAGENET1K_V2",
+      "transform": "ImageClassification(\n    crop_size=[224]\n    resize_size=[256]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+      "applied_preprocessing": {
+        "resize_size": [
+          256
+        ],
+        "crop_size": [
+          224
+        ],
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "antialias": true
+      },
+      "baseline_loader": {
+        "model_name": "resnet50",
+        "weights": "ResNet50_Weights.IMAGENET1K_V2",
+        "weights_url": "https://download.pytorch.org/models/resnet50-11ad3fa6.pth",
+        "checkpoint": "resnet50-11ad3fa6.pth",
+        "device": "cuda",
+        "torch_version": "2.11.0+cu130",
+        "torchvision_version": "0.26.0+cu130",
+        "preprocessing": {
+          "color_mode": "RGB",
+          "resize_size": [
+            232
+          ],
+          "crop_size": [
+            224
+          ],
+          "interpolation": "bilinear",
+          "antialias": true,
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ]
+        }
+      }
+    }
+  },
+  "exclusions": [],
+  "selection_rule": "caller-provided cohort; IDs in selected_images.csv; no correctness filtering",
+  "cohort_kind": "subset",
+  "num_classes": 194,
+  "images_per_class": null,
+  "manifest": "/content/drive/MyDrive/cnn-vit-interpretability/data/manifests/analysis_10000_seed42.csv",
+  "manifest_sha256": "eea185ba9e733636eb245c8d4eab3137f91af4be3d9a5f3766a48bf11d7b057f",
+  "selected_images_sha256": "1085a59115435a747d2e011624f02d955279170e401780c415ad7fdac4572303",
+  "cohort_sha256_lf": "1085a59115435a747d2e011624f02d955279170e401780c415ad7fdac4572303",
+  "preview_ids": [
+    "ILSVRC2012_val_00008718_n01774384.JPEG",
+    "ILSVRC2012_val_00017733_n09193705.JPEG",
+    "ILSVRC2012_val_00018923_n02917067.JPEG"
+  ],
+  "raw_maps": "previews_only",
+  "timings_seconds": {
+    "vit_b_16": 58.47529058800001,
+    "resnet50": 53.67884085999998,
+    "total": 122.80336900000003
+  },
+  "peak_cuda_memory_bytes": {
+    "vit_b_16": 450271744,
+    "resnet50": 220662784
+  },
+  "metrics_dir": "/content/drive/MyDrive/cnn-vit-interpretability/results/metrics/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final",
+  "figures_dir": "/content/drive/MyDrive/cnn-vit-interpretability/results/figures/experiments/erf/sensitivity_200_energy_quarter_20261104T135619_811103Z/final",
+  "code": {
+    "git_revision": "a9ef4593633b72f45906ed5e5d1d358226cfb41e",
+    "git_dirty": true,
+    "file_sha256": {
+      "experiments/erf/erf_experiment.py": "f90b414df945d07d9088eabe2f2c03c97ad052af734e674730d416d4c0128efc",
+      "experiments/erf/erf_statistics.py": "a94dd5ca063f1680f6cd96f5dd102cda4490e6643d6adeb1ddeb7bbe6dde165a",
+      "experiments/erf/erf_workflow.py": "494ee221464bea4fd6ade8e8580637a173a9f065f3fe96f6a1a4544f194ba81a",
+      "notebooks/04_erf_2000.ipynb": "cdcb50f47d862cd091b32a0a989dbda72e8db0b7737239e3bd8f8944dbfdd63d",
+      "src/models.py": "adee07f977219f031b4f832bdcd01a57640c5c4cf5865582cb3f61b76f85c41b",
+      "src/data.py": "7d2124f355325f7004f39b86f55e3975698ea2ac71e9351baffe94c2d7b7ecda",
+      "src/evaluation.py": "851d145c479c4f653692ed6d47519c7fd8f943796591ca7f4b72a4bdb48f5d46"
+    }
+  },
+  "metric_units": {
+    "area50_fraction": "fraction of input pixels",
+    "area90_fraction": "fraction of input pixels",
+    "dispersion_normalized": "normalized-coordinate RMS distance"
+  },
+  "artifact_sha256": {
+    "selected_images.csv": "1085a59115435a747d2e011624f02d955279170e401780c415ad7fdac4572303",
+    "metrics.csv": "490330fe914a7157ab7122f878fc1dfb6aeb4628143ec1f18320ae2940b62cfa",
+    "summary.csv": "6ef546dc9ef36b6b10b9ce6520c47006bc8e9bd821706608ceb70d28dd86f1f2"
+  }
+}
